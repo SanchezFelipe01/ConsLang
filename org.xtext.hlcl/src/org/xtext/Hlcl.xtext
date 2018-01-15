@@ -1,0 +1,47 @@
+grammar org.xtext.Hlcl with org.eclipse.xtext.common.Terminals
+
+//import "http://www.eclipse.org/emf/2002/Ecore" as ecore // line taken from the arithmetics example
+generate hlcl "http://www.xtext.org/Hlcl" //genrates the Ecore model from the grammar
+
+Model:
+	
+	vars+=Variables+ constraints+=ConsExp+;
+	
+Variables:
+	vars+=Variable;
+
+Variable:
+	'var' name=ID 'in' dom=Domain
+	;
+Domain: 
+	dom= (RangeDomain | SetDomain)
+	;
+RangeDomain:
+	start= INT '..' end=INT
+	;
+SetDomain:
+	('[') (list = INT (',' INT)+)  (']')
+	;
+	
+ConsExp:
+		BooleanExp|IntExp
+		;
+	
+BooleanExp:
+	'Boolean expression'
+;
+
+IntExp:
+	'Int expression'
+;
+
+/*Constraints:
+	cons+= Constraint;
+
+Constraint:
+	BoolExp
+;
+BoolExp:
+	boolExp+= 'string'
+;*/
+
