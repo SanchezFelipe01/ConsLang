@@ -18,25 +18,25 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.xtext.hlcl.ConstraintProgram;
 import org.xtext.hlcl.HlclPackage;
-import org.xtext.hlcl.Model;
 import org.xtext.hlcl.Variables;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model</b></em>'.
+ * An implementation of the model object '<em><b>Constraint Program</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xtext.hlcl.impl.ModelImpl#getVars <em>Vars</em>}</li>
- *   <li>{@link org.xtext.hlcl.impl.ModelImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.ConstraintProgramImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.ConstraintProgramImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ModelImpl extends MinimalEObjectImpl.Container implements Model
+public class ConstraintProgramImpl extends MinimalEObjectImpl.Container implements ConstraintProgram
 {
   /**
    * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
@@ -63,7 +63,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ModelImpl()
+  protected ConstraintProgramImpl()
   {
     super();
   }
@@ -76,7 +76,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   @Override
   protected EClass eStaticClass()
   {
-    return HlclPackage.Literals.MODEL;
+    return HlclPackage.Literals.CONSTRAINT_PROGRAM;
   }
 
   /**
@@ -88,7 +88,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (vars == null)
     {
-      vars = new EObjectContainmentEList<Variables>(Variables.class, this, HlclPackage.MODEL__VARS);
+      vars = new EObjectContainmentEList<Variables>(Variables.class, this, HlclPackage.CONSTRAINT_PROGRAM__VARS);
     }
     return vars;
   }
@@ -102,7 +102,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (constraints == null)
     {
-      constraints = new EDataTypeEList<String>(String.class, this, HlclPackage.MODEL__CONSTRAINTS);
+      constraints = new EDataTypeEList<String>(String.class, this, HlclPackage.CONSTRAINT_PROGRAM__CONSTRAINTS);
     }
     return constraints;
   }
@@ -117,7 +117,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case HlclPackage.MODEL__VARS:
+      case HlclPackage.CONSTRAINT_PROGRAM__VARS:
         return ((InternalEList<?>)getVars()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -133,9 +133,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case HlclPackage.MODEL__VARS:
+      case HlclPackage.CONSTRAINT_PROGRAM__VARS:
         return getVars();
-      case HlclPackage.MODEL__CONSTRAINTS:
+      case HlclPackage.CONSTRAINT_PROGRAM__CONSTRAINTS:
         return getConstraints();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -152,11 +152,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case HlclPackage.MODEL__VARS:
+      case HlclPackage.CONSTRAINT_PROGRAM__VARS:
         getVars().clear();
         getVars().addAll((Collection<? extends Variables>)newValue);
         return;
-      case HlclPackage.MODEL__CONSTRAINTS:
+      case HlclPackage.CONSTRAINT_PROGRAM__CONSTRAINTS:
         getConstraints().clear();
         getConstraints().addAll((Collection<? extends String>)newValue);
         return;
@@ -174,10 +174,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case HlclPackage.MODEL__VARS:
+      case HlclPackage.CONSTRAINT_PROGRAM__VARS:
         getVars().clear();
         return;
-      case HlclPackage.MODEL__CONSTRAINTS:
+      case HlclPackage.CONSTRAINT_PROGRAM__CONSTRAINTS:
         getConstraints().clear();
         return;
     }
@@ -194,9 +194,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case HlclPackage.MODEL__VARS:
+      case HlclPackage.CONSTRAINT_PROGRAM__VARS:
         return vars != null && !vars.isEmpty();
-      case HlclPackage.MODEL__CONSTRAINTS:
+      case HlclPackage.CONSTRAINT_PROGRAM__CONSTRAINTS:
         return constraints != null && !constraints.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -219,4 +219,4 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     return result.toString();
   }
 
-} //ModelImpl
+} //ConstraintProgramImpl

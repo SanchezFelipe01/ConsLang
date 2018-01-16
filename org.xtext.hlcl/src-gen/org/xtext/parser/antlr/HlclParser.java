@@ -27,7 +27,7 @@ public class HlclParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "ConstraintProgram";
 	}
 
 	public HlclGrammarAccess getGrammarAccess() {

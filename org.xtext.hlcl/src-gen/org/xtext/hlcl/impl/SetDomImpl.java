@@ -3,57 +3,48 @@
  */
 package org.xtext.hlcl.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 import org.xtext.hlcl.HlclPackage;
-import org.xtext.hlcl.SetDomain;
+import org.xtext.hlcl.SetDom;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Set Domain</b></em>'.
+ * An implementation of the model object '<em><b>Set Dom</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xtext.hlcl.impl.SetDomainImpl#getList <em>List</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.SetDomImpl#getList <em>List</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDomain
+public class SetDomImpl extends DomImpl implements SetDom
 {
   /**
-   * The default value of the '{@link #getList() <em>List</em>}' attribute.
+   * The cached value of the '{@link #getList() <em>List</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getList()
    * @generated
    * @ordered
    */
-  protected static final int LIST_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getList() <em>List</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getList()
-   * @generated
-   * @ordered
-   */
-  protected int list = LIST_EDEFAULT;
+  protected EList<Integer> list;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SetDomainImpl()
+  protected SetDomImpl()
   {
     super();
   }
@@ -66,7 +57,7 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
   @Override
   protected EClass eStaticClass()
   {
-    return HlclPackage.Literals.SET_DOMAIN;
+    return HlclPackage.Literals.SET_DOM;
   }
 
   /**
@@ -74,22 +65,13 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getList()
+  public EList<Integer> getList()
   {
+    if (list == null)
+    {
+      list = new EDataTypeEList<Integer>(Integer.class, this, HlclPackage.SET_DOM__LIST);
+    }
     return list;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setList(int newList)
-  {
-    int oldList = list;
-    list = newList;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.SET_DOMAIN__LIST, oldList, list));
   }
 
   /**
@@ -102,7 +84,7 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
   {
     switch (featureID)
     {
-      case HlclPackage.SET_DOMAIN__LIST:
+      case HlclPackage.SET_DOM__LIST:
         return getList();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -113,13 +95,15 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case HlclPackage.SET_DOMAIN__LIST:
-        setList((Integer)newValue);
+      case HlclPackage.SET_DOM__LIST:
+        getList().clear();
+        getList().addAll((Collection<? extends Integer>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +119,8 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
   {
     switch (featureID)
     {
-      case HlclPackage.SET_DOMAIN__LIST:
-        setList(LIST_EDEFAULT);
+      case HlclPackage.SET_DOM__LIST:
+        getList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +136,8 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
   {
     switch (featureID)
     {
-      case HlclPackage.SET_DOMAIN__LIST:
-        return list != LIST_EDEFAULT;
+      case HlclPackage.SET_DOM__LIST:
+        return list != null && !list.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -175,4 +159,4 @@ public class SetDomainImpl extends MinimalEObjectImpl.Container implements SetDo
     return result.toString();
   }
 
-} //SetDomainImpl
+} //SetDomImpl

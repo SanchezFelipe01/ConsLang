@@ -73,10 +73,10 @@ public class HlclSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case HlclPackage.MODEL:
+      case HlclPackage.CONSTRAINT_PROGRAM:
       {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
+        ConstraintProgram constraintProgram = (ConstraintProgram)theEObject;
+        T result = caseConstraintProgram(constraintProgram);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -87,31 +87,34 @@ public class HlclSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HlclPackage.VARIABLE:
+      case HlclPackage.DOM:
       {
-        Variable variable = (Variable)theEObject;
-        T result = caseVariable(variable);
+        Dom dom = (Dom)theEObject;
+        T result = caseDom(dom);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HlclPackage.DOMAIN:
+      case HlclPackage.RANGE_DOM:
       {
-        Domain domain = (Domain)theEObject;
-        T result = caseDomain(domain);
+        RangeDom rangeDom = (RangeDom)theEObject;
+        T result = caseRangeDom(rangeDom);
+        if (result == null) result = caseDom(rangeDom);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HlclPackage.RANGE_DOMAIN:
+      case HlclPackage.SET_DOM:
       {
-        RangeDomain rangeDomain = (RangeDomain)theEObject;
-        T result = caseRangeDomain(rangeDomain);
+        SetDom setDom = (SetDom)theEObject;
+        T result = caseSetDom(setDom);
+        if (result == null) result = caseDom(setDom);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HlclPackage.SET_DOMAIN:
+      case HlclPackage.BOOL_DOM:
       {
-        SetDomain setDomain = (SetDomain)theEObject;
-        T result = caseSetDomain(setDomain);
+        BoolDom boolDom = (BoolDom)theEObject;
+        T result = caseBoolDom(boolDom);
+        if (result == null) result = caseDom(boolDom);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,17 +123,17 @@ public class HlclSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Constraint Program</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Constraint Program</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModel(Model object)
+  public T caseConstraintProgram(ConstraintProgram object)
   {
     return null;
   }
@@ -152,65 +155,65 @@ public class HlclSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Dom</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Dom</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseVariable(Variable object)
+  public T caseDom(Dom object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Domain</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Range Dom</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Domain</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Range Dom</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDomain(Domain object)
+  public T caseRangeDom(RangeDom object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Range Domain</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Set Dom</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Range Domain</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Set Dom</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRangeDomain(RangeDomain object)
+  public T caseSetDom(SetDom object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Set Domain</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Bool Dom</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Set Domain</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Bool Dom</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSetDomain(SetDomain object)
+  public T caseBoolDom(BoolDom object)
   {
     return null;
   }

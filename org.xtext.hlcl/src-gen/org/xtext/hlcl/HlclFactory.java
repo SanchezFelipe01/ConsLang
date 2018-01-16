@@ -24,13 +24,13 @@ public interface HlclFactory extends EFactory
   HlclFactory eINSTANCE = org.xtext.hlcl.impl.HlclFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Constraint Program</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Constraint Program</em>'.
    * @generated
    */
-  Model createModel();
+  ConstraintProgram createConstraintProgram();
 
   /**
    * Returns a new object of class '<em>Variables</em>'.
@@ -42,40 +42,40 @@ public interface HlclFactory extends EFactory
   Variables createVariables();
 
   /**
-   * Returns a new object of class '<em>Variable</em>'.
+   * Returns a new object of class '<em>Dom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable</em>'.
+   * @return a new object of class '<em>Dom</em>'.
    * @generated
    */
-  Variable createVariable();
+  Dom createDom();
 
   /**
-   * Returns a new object of class '<em>Domain</em>'.
+   * Returns a new object of class '<em>Range Dom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Domain</em>'.
+   * @return a new object of class '<em>Range Dom</em>'.
    * @generated
    */
-  Domain createDomain();
+  RangeDom createRangeDom();
 
   /**
-   * Returns a new object of class '<em>Range Domain</em>'.
+   * Returns a new object of class '<em>Set Dom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Range Domain</em>'.
+   * @return a new object of class '<em>Set Dom</em>'.
    * @generated
    */
-  RangeDomain createRangeDomain();
+  SetDom createSetDom();
 
   /**
-   * Returns a new object of class '<em>Set Domain</em>'.
+   * Returns a new object of class '<em>Bool Dom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Set Domain</em>'.
+   * @return a new object of class '<em>Bool Dom</em>'.
    * @generated
    */
-  SetDomain createSetDomain();
+  BoolDom createBoolDom();
 
   /**
    * Returns the package supported by this factory.

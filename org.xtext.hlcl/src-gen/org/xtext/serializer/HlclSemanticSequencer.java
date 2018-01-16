@@ -14,12 +14,11 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.hlcl.Domain;
+import org.xtext.hlcl.BoolDom;
+import org.xtext.hlcl.ConstraintProgram;
 import org.xtext.hlcl.HlclPackage;
-import org.xtext.hlcl.Model;
-import org.xtext.hlcl.RangeDomain;
-import org.xtext.hlcl.SetDomain;
-import org.xtext.hlcl.Variable;
+import org.xtext.hlcl.RangeDom;
+import org.xtext.hlcl.SetDom;
 import org.xtext.hlcl.Variables;
 import org.xtext.services.HlclGrammarAccess;
 
@@ -37,20 +36,17 @@ public class HlclSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == HlclPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case HlclPackage.DOMAIN:
-				sequence_Domain(context, (Domain) semanticObject); 
+			case HlclPackage.BOOL_DOM:
+				sequence_BoolDom(context, (BoolDom) semanticObject); 
 				return; 
-			case HlclPackage.MODEL:
-				sequence_Model(context, (Model) semanticObject); 
+			case HlclPackage.CONSTRAINT_PROGRAM:
+				sequence_ConstraintProgram(context, (ConstraintProgram) semanticObject); 
 				return; 
-			case HlclPackage.RANGE_DOMAIN:
-				sequence_RangeDomain(context, (RangeDomain) semanticObject); 
+			case HlclPackage.RANGE_DOM:
+				sequence_RangeDom(context, (RangeDom) semanticObject); 
 				return; 
-			case HlclPackage.SET_DOMAIN:
-				sequence_SetDomain(context, (SetDomain) semanticObject); 
-				return; 
-			case HlclPackage.VARIABLE:
-				sequence_Variable(context, (Variable) semanticObject); 
+			case HlclPackage.SET_DOM:
+				sequence_SetDom(context, (SetDom) semanticObject); 
 				return; 
 			case HlclPackage.VARIABLES:
 				sequence_Variables(context, (Variables) semanticObject); 
@@ -62,85 +58,67 @@ public class HlclSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Domain returns Domain
+	 *     Dom returns BoolDom
+	 *     BoolDom returns BoolDom
 	 *
 	 * Constraint:
-	 *     (dom=RangeDomain | dom=SetDomain)
+	 *     dom='boolDomain'
 	 */
-	protected void sequence_Domain(ISerializationContext context, Domain semanticObject) {
+	protected void sequence_BoolDom(ISerializationContext context, BoolDom semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.BOOL_DOM__DOM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.BOOL_DOM__DOM));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBoolDomAccess().getDomBoolDomainKeyword_0(), semanticObject.getDom());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConstraintProgram returns ConstraintProgram
+	 *
+	 * Constraint:
+	 *     (vars+=Variables+ constraints+=ConsExp*)
+	 */
+	protected void sequence_ConstraintProgram(ISerializationContext context, ConstraintProgram semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Model returns Model
-	 *
-	 * Constraint:
-	 *     (vars+=Variables+ constraints+=ConsExp+)
-	 */
-	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     RangeDomain returns RangeDomain
+	 *     Dom returns RangeDom
+	 *     RangeDom returns RangeDom
 	 *
 	 * Constraint:
 	 *     (start=INT end=INT)
 	 */
-	protected void sequence_RangeDomain(ISerializationContext context, RangeDomain semanticObject) {
+	protected void sequence_RangeDom(ISerializationContext context, RangeDom semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.RANGE_DOMAIN__START) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.RANGE_DOMAIN__START));
-			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.RANGE_DOMAIN__END) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.RANGE_DOMAIN__END));
+			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.RANGE_DOM__START) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.RANGE_DOM__START));
+			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.RANGE_DOM__END) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.RANGE_DOM__END));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRangeDomainAccess().getStartINTTerminalRuleCall_0_0(), semanticObject.getStart());
-		feeder.accept(grammarAccess.getRangeDomainAccess().getEndINTTerminalRuleCall_2_0(), semanticObject.getEnd());
+		feeder.accept(grammarAccess.getRangeDomAccess().getStartINTTerminalRuleCall_1_0(), semanticObject.getStart());
+		feeder.accept(grammarAccess.getRangeDomAccess().getEndINTTerminalRuleCall_3_0(), semanticObject.getEnd());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     SetDomain returns SetDomain
+	 *     Dom returns SetDom
+	 *     SetDom returns SetDom
 	 *
 	 * Constraint:
-	 *     list=INT
+	 *     list+=INT+
 	 */
-	protected void sequence_SetDomain(ISerializationContext context, SetDomain semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.SET_DOMAIN__LIST) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.SET_DOMAIN__LIST));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSetDomainAccess().getListINTTerminalRuleCall_1_0_0(), semanticObject.getList());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Variable returns Variable
-	 *
-	 * Constraint:
-	 *     (name=ID dom=Domain)
-	 */
-	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.VARIABLE__NAME));
-			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.VARIABLE__DOM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.VARIABLE__DOM));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getVariableAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getVariableAccess().getDomDomainParserRuleCall_3_0(), semanticObject.getDom());
-		feeder.finish();
+	protected void sequence_SetDom(ISerializationContext context, SetDom semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -149,10 +127,19 @@ public class HlclSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Variables returns Variables
 	 *
 	 * Constraint:
-	 *     vars+=Variable
+	 *     (name=ID dom=Dom)
 	 */
 	protected void sequence_Variables(ISerializationContext context, Variables semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.VARIABLES__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.VARIABLES__NAME));
+			if (transientValues.isValueTransient(semanticObject, HlclPackage.Literals.VARIABLES__DOM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HlclPackage.Literals.VARIABLES__DOM));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVariablesAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getVariablesAccess().getDomDomParserRuleCall_3_0(), semanticObject.getDom());
+		feeder.finish();
 	}
 	
 	

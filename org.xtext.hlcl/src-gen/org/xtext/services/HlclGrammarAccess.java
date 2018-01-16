@@ -6,6 +6,7 @@ package org.xtext.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
@@ -22,64 +23,57 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.Model");
+	public class ConstraintProgramElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.ConstraintProgram");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cVarsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cVarsVariablesParserRuleCall_0_0 = (RuleCall)cVarsAssignment_0.eContents().get(0);
-		private final Assignment cConstraintsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cConstraintsConsExpParserRuleCall_1_0 = (RuleCall)cConstraintsAssignment_1.eContents().get(0);
+		private final Keyword cVariablesKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cVarsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cVarsVariablesParserRuleCall_1_0 = (RuleCall)cVarsAssignment_1.eContents().get(0);
+		private final Keyword cConstraintsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cConstraintsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cConstraintsConsExpParserRuleCall_3_0 = (RuleCall)cConstraintsAssignment_3.eContents().get(0);
 		
 		////genrates the Ecore model from the grammar
-		//Model:
-		//	vars+=Variables+ constraints+=ConsExp+;
+		//ConstraintProgram:
+		//	'variables:' vars+=Variables+ 'constraints:' constraints+=ConsExp*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//vars+=Variables+ constraints+=ConsExp+
+		//'variables:' vars+=Variables+ 'constraints:' constraints+=ConsExp*
 		public Group getGroup() { return cGroup; }
 		
+		//'variables:'
+		public Keyword getVariablesKeyword_0() { return cVariablesKeyword_0; }
+		
 		//vars+=Variables+
-		public Assignment getVarsAssignment_0() { return cVarsAssignment_0; }
+		public Assignment getVarsAssignment_1() { return cVarsAssignment_1; }
 		
 		//Variables
-		public RuleCall getVarsVariablesParserRuleCall_0_0() { return cVarsVariablesParserRuleCall_0_0; }
+		public RuleCall getVarsVariablesParserRuleCall_1_0() { return cVarsVariablesParserRuleCall_1_0; }
 		
-		//constraints+=ConsExp+
-		public Assignment getConstraintsAssignment_1() { return cConstraintsAssignment_1; }
+		//'constraints:'
+		public Keyword getConstraintsKeyword_2() { return cConstraintsKeyword_2; }
+		
+		//constraints+=ConsExp*
+		public Assignment getConstraintsAssignment_3() { return cConstraintsAssignment_3; }
 		
 		//ConsExp
-		public RuleCall getConstraintsConsExpParserRuleCall_1_0() { return cConstraintsConsExpParserRuleCall_1_0; }
+		public RuleCall getConstraintsConsExpParserRuleCall_3_0() { return cConstraintsConsExpParserRuleCall_3_0; }
 	}
 	public class VariablesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.Variables");
-		private final Assignment cVarsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cVarsVariableParserRuleCall_0 = (RuleCall)cVarsAssignment.eContents().get(0);
-		
-		//Variables:
-		//	vars+=Variable;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//vars+=Variable
-		public Assignment getVarsAssignment() { return cVarsAssignment; }
-		
-		//Variable
-		public RuleCall getVarsVariableParserRuleCall_0() { return cVarsVariableParserRuleCall_0; }
-	}
-	public class VariableElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.Variable");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cVarKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cDomainKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cDomAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cDomDomainParserRuleCall_3_0 = (RuleCall)cDomAssignment_3.eContents().get(0);
+		private final RuleCall cDomDomParserRuleCall_3_0 = (RuleCall)cDomAssignment_3.eContents().get(0);
 		
-		//Variable:
-		//	'var' name=ID 'in' dom=Domain;
+		//Variables:
+		//	'var' name=ID 'domain:' dom=Dom;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'var' name=ID 'in' dom=Domain
+		//'var' name=ID 'domain:' dom=Dom
 		public Group getGroup() { return cGroup; }
 		
 		//'var'
@@ -91,111 +85,121 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'in'
-		public Keyword getInKeyword_2() { return cInKeyword_2; }
+		//'domain:'
+		public Keyword getDomainKeyword_2() { return cDomainKeyword_2; }
 		
-		//dom=Domain
+		//dom=Dom
 		public Assignment getDomAssignment_3() { return cDomAssignment_3; }
 		
-		//Domain
-		public RuleCall getDomDomainParserRuleCall_3_0() { return cDomDomainParserRuleCall_3_0; }
+		//Dom
+		public RuleCall getDomDomParserRuleCall_3_0() { return cDomDomParserRuleCall_3_0; }
 	}
-	public class DomainElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.Domain");
-		private final Assignment cDomAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cDomAlternatives_0 = (Alternatives)cDomAssignment.eContents().get(0);
-		private final RuleCall cDomRangeDomainParserRuleCall_0_0 = (RuleCall)cDomAlternatives_0.eContents().get(0);
-		private final RuleCall cDomSetDomainParserRuleCall_0_1 = (RuleCall)cDomAlternatives_0.eContents().get(1);
+	public class DomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.Dom");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cRangeDomParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSetDomParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBoolDomParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//Domain:
-		//	dom=(RangeDomain | SetDomain);
+		////Variable:
+		////	'var' name=ID 'in' dom=Domain
+		////	;
+		//Dom:
+		//	RangeDom | SetDom | BoolDom;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//dom=(RangeDomain | SetDomain)
-		public Assignment getDomAssignment() { return cDomAssignment; }
+		//RangeDom | SetDom | BoolDom
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//(RangeDomain | SetDomain)
-		public Alternatives getDomAlternatives_0() { return cDomAlternatives_0; }
+		//RangeDom
+		public RuleCall getRangeDomParserRuleCall_0() { return cRangeDomParserRuleCall_0; }
 		
-		//RangeDomain
-		public RuleCall getDomRangeDomainParserRuleCall_0_0() { return cDomRangeDomainParserRuleCall_0_0; }
+		//SetDom
+		public RuleCall getSetDomParserRuleCall_1() { return cSetDomParserRuleCall_1; }
 		
-		//SetDomain
-		public RuleCall getDomSetDomainParserRuleCall_0_1() { return cDomSetDomainParserRuleCall_0_1; }
+		//BoolDom
+		public RuleCall getBoolDomParserRuleCall_2() { return cBoolDomParserRuleCall_2; }
 	}
-	public class RangeDomainElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.RangeDomain");
+	public class RangeDomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.RangeDom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cStartAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cStartINTTerminalRuleCall_0_0 = (RuleCall)cStartAssignment_0.eContents().get(0);
-		private final Keyword cFullStopFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cEndAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cEndINTTerminalRuleCall_2_0 = (RuleCall)cEndAssignment_2.eContents().get(0);
+		private final Action cRangeDomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cStartAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cStartINTTerminalRuleCall_1_0 = (RuleCall)cStartAssignment_1.eContents().get(0);
+		private final Keyword cColonColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cEndAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEndINTTerminalRuleCall_3_0 = (RuleCall)cEndAssignment_3.eContents().get(0);
 		
-		//RangeDomain:
-		//	start=INT '..' end=INT;
+		//RangeDom:
+		//	{RangeDom} start=INT '::' end=INT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//start=INT '..' end=INT
+		//{RangeDom} start=INT '::' end=INT
 		public Group getGroup() { return cGroup; }
+		
+		//{RangeDom}
+		public Action getRangeDomAction_0() { return cRangeDomAction_0; }
 		
 		//start=INT
-		public Assignment getStartAssignment_0() { return cStartAssignment_0; }
+		public Assignment getStartAssignment_1() { return cStartAssignment_1; }
 		
 		//INT
-		public RuleCall getStartINTTerminalRuleCall_0_0() { return cStartINTTerminalRuleCall_0_0; }
+		public RuleCall getStartINTTerminalRuleCall_1_0() { return cStartINTTerminalRuleCall_1_0; }
 		
-		//'..'
-		public Keyword getFullStopFullStopKeyword_1() { return cFullStopFullStopKeyword_1; }
+		//'::'
+		public Keyword getColonColonKeyword_2() { return cColonColonKeyword_2; }
 		
 		//end=INT
-		public Assignment getEndAssignment_2() { return cEndAssignment_2; }
+		public Assignment getEndAssignment_3() { return cEndAssignment_3; }
 		
 		//INT
-		public RuleCall getEndINTTerminalRuleCall_2_0() { return cEndINTTerminalRuleCall_2_0; }
+		public RuleCall getEndINTTerminalRuleCall_3_0() { return cEndINTTerminalRuleCall_3_0; }
 	}
-	public class SetDomainElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.SetDomain");
+	public class SetDomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.SetDom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cListAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cListINTTerminalRuleCall_1_0_0 = (RuleCall)cListAssignment_1_0.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cCommaKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Action cSetDomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cListAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cListINTTerminalRuleCall_2_0 = (RuleCall)cListAssignment_2.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//SetDomain:
-		//	'[' (list=INT (',' INT)+) ']';
+		//SetDom:
+		//	{SetDom} '[' list+=INT+ ']';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'[' (list=INT (',' INT)+) ']'
+		//{SetDom} '[' list+=INT+ ']'
 		public Group getGroup() { return cGroup; }
 		
+		//{SetDom}
+		public Action getSetDomAction_0() { return cSetDomAction_0; }
+		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 		
-		//list=INT (',' INT)+
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//list=INT
-		public Assignment getListAssignment_1_0() { return cListAssignment_1_0; }
+		//list+=INT+
+		public Assignment getListAssignment_2() { return cListAssignment_2; }
 		
 		//INT
-		public RuleCall getListINTTerminalRuleCall_1_0_0() { return cListINTTerminalRuleCall_1_0_0; }
-		
-		//(',' INT)+
-		public Group getGroup_1_1() { return cGroup_1_1; }
-		
-		//','
-		public Keyword getCommaKeyword_1_1_0() { return cCommaKeyword_1_1_0; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_1_1_1() { return cINTTerminalRuleCall_1_1_1; }
+		public RuleCall getListINTTerminalRuleCall_2_0() { return cListINTTerminalRuleCall_2_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+	}
+	public class BoolDomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.BoolDom");
+		private final Assignment cDomAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cDomBoolDomainKeyword_0 = (Keyword)cDomAssignment.eContents().get(0);
+		
+		//BoolDom:
+		//	dom='boolDomain';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//dom='boolDomain'
+		public Assignment getDomAssignment() { return cDomAssignment; }
+		
+		//'boolDomain'
+		public Keyword getDomBoolDomainKeyword_0() { return cDomBoolDomainKeyword_0; }
 	}
 	public class ConsExpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.ConsExp");
@@ -203,6 +207,9 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBooleanExpParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntExpParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
+		////StringDomain:
+		////	('[') (list = STRING (',' STRING )+)  (']')
+		////	;
 		//ConsExp:
 		//	BooleanExp | IntExp;
 		@Override public ParserRule getRule() { return rule; }
@@ -240,12 +247,12 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private final ModelElements pModel;
+	private final ConstraintProgramElements pConstraintProgram;
 	private final VariablesElements pVariables;
-	private final VariableElements pVariable;
-	private final DomainElements pDomain;
-	private final RangeDomainElements pRangeDomain;
-	private final SetDomainElements pSetDomain;
+	private final DomElements pDom;
+	private final RangeDomElements pRangeDom;
+	private final SetDomElements pSetDom;
+	private final BoolDomElements pBoolDom;
 	private final ConsExpElements pConsExp;
 	private final BooleanExpElements pBooleanExp;
 	private final IntExpElements pIntExp;
@@ -259,12 +266,12 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pModel = new ModelElements();
+		this.pConstraintProgram = new ConstraintProgramElements();
 		this.pVariables = new VariablesElements();
-		this.pVariable = new VariableElements();
-		this.pDomain = new DomainElements();
-		this.pRangeDomain = new RangeDomainElements();
-		this.pSetDomain = new SetDomainElements();
+		this.pDom = new DomElements();
+		this.pRangeDom = new RangeDomElements();
+		this.pSetDom = new SetDomElements();
+		this.pBoolDom = new BoolDomElements();
 		this.pConsExp = new ConsExpElements();
 		this.pBooleanExp = new BooleanExpElements();
 		this.pIntExp = new IntExpElements();
@@ -298,18 +305,18 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	////genrates the Ecore model from the grammar
-	//Model:
-	//	vars+=Variables+ constraints+=ConsExp+;
-	public ModelElements getModelAccess() {
-		return pModel;
+	//ConstraintProgram:
+	//	'variables:' vars+=Variables+ 'constraints:' constraints+=ConsExp*;
+	public ConstraintProgramElements getConstraintProgramAccess() {
+		return pConstraintProgram;
 	}
 	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
+	public ParserRule getConstraintProgramRule() {
+		return getConstraintProgramAccess().getRule();
 	}
 	
 	//Variables:
-	//	vars+=Variable;
+	//	'var' name=ID 'domain:' dom=Dom;
 	public VariablesElements getVariablesAccess() {
 		return pVariables;
 	}
@@ -318,46 +325,52 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		return getVariablesAccess().getRule();
 	}
 	
-	//Variable:
-	//	'var' name=ID 'in' dom=Domain;
-	public VariableElements getVariableAccess() {
-		return pVariable;
+	////Variable:
+	////	'var' name=ID 'in' dom=Domain
+	////	;
+	//Dom:
+	//	RangeDom | SetDom | BoolDom;
+	public DomElements getDomAccess() {
+		return pDom;
 	}
 	
-	public ParserRule getVariableRule() {
-		return getVariableAccess().getRule();
+	public ParserRule getDomRule() {
+		return getDomAccess().getRule();
 	}
 	
-	//Domain:
-	//	dom=(RangeDomain | SetDomain);
-	public DomainElements getDomainAccess() {
-		return pDomain;
+	//RangeDom:
+	//	{RangeDom} start=INT '::' end=INT;
+	public RangeDomElements getRangeDomAccess() {
+		return pRangeDom;
 	}
 	
-	public ParserRule getDomainRule() {
-		return getDomainAccess().getRule();
+	public ParserRule getRangeDomRule() {
+		return getRangeDomAccess().getRule();
 	}
 	
-	//RangeDomain:
-	//	start=INT '..' end=INT;
-	public RangeDomainElements getRangeDomainAccess() {
-		return pRangeDomain;
+	//SetDom:
+	//	{SetDom} '[' list+=INT+ ']';
+	public SetDomElements getSetDomAccess() {
+		return pSetDom;
 	}
 	
-	public ParserRule getRangeDomainRule() {
-		return getRangeDomainAccess().getRule();
+	public ParserRule getSetDomRule() {
+		return getSetDomAccess().getRule();
 	}
 	
-	//SetDomain:
-	//	'[' (list=INT (',' INT)+) ']';
-	public SetDomainElements getSetDomainAccess() {
-		return pSetDomain;
+	//BoolDom:
+	//	dom='boolDomain';
+	public BoolDomElements getBoolDomAccess() {
+		return pBoolDom;
 	}
 	
-	public ParserRule getSetDomainRule() {
-		return getSetDomainAccess().getRule();
+	public ParserRule getBoolDomRule() {
+		return getBoolDomAccess().getRule();
 	}
 	
+	////StringDomain:
+	////	('[') (list = STRING (',' STRING )+)  (']')
+	////	;
 	//ConsExp:
 	//	BooleanExp | IntExp;
 	public ConsExpElements getConsExpAccess() {

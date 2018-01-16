@@ -31,23 +31,20 @@ public class HlclParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getDomainAccess().getDomAlternatives_0(), "rule__Domain__DomAlternatives_0");
+					put(grammarAccess.getDomAccess().getAlternatives(), "rule__Dom__Alternatives");
 					put(grammarAccess.getConsExpAccess().getAlternatives(), "rule__ConsExp__Alternatives");
-					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
-					put(grammarAccess.getVariableAccess().getGroup(), "rule__Variable__Group__0");
-					put(grammarAccess.getRangeDomainAccess().getGroup(), "rule__RangeDomain__Group__0");
-					put(grammarAccess.getSetDomainAccess().getGroup(), "rule__SetDomain__Group__0");
-					put(grammarAccess.getSetDomainAccess().getGroup_1(), "rule__SetDomain__Group_1__0");
-					put(grammarAccess.getSetDomainAccess().getGroup_1_1(), "rule__SetDomain__Group_1_1__0");
-					put(grammarAccess.getModelAccess().getVarsAssignment_0(), "rule__Model__VarsAssignment_0");
-					put(grammarAccess.getModelAccess().getConstraintsAssignment_1(), "rule__Model__ConstraintsAssignment_1");
-					put(grammarAccess.getVariablesAccess().getVarsAssignment(), "rule__Variables__VarsAssignment");
-					put(grammarAccess.getVariableAccess().getNameAssignment_1(), "rule__Variable__NameAssignment_1");
-					put(grammarAccess.getVariableAccess().getDomAssignment_3(), "rule__Variable__DomAssignment_3");
-					put(grammarAccess.getDomainAccess().getDomAssignment(), "rule__Domain__DomAssignment");
-					put(grammarAccess.getRangeDomainAccess().getStartAssignment_0(), "rule__RangeDomain__StartAssignment_0");
-					put(grammarAccess.getRangeDomainAccess().getEndAssignment_2(), "rule__RangeDomain__EndAssignment_2");
-					put(grammarAccess.getSetDomainAccess().getListAssignment_1_0(), "rule__SetDomain__ListAssignment_1_0");
+					put(grammarAccess.getConstraintProgramAccess().getGroup(), "rule__ConstraintProgram__Group__0");
+					put(grammarAccess.getVariablesAccess().getGroup(), "rule__Variables__Group__0");
+					put(grammarAccess.getRangeDomAccess().getGroup(), "rule__RangeDom__Group__0");
+					put(grammarAccess.getSetDomAccess().getGroup(), "rule__SetDom__Group__0");
+					put(grammarAccess.getConstraintProgramAccess().getVarsAssignment_1(), "rule__ConstraintProgram__VarsAssignment_1");
+					put(grammarAccess.getConstraintProgramAccess().getConstraintsAssignment_3(), "rule__ConstraintProgram__ConstraintsAssignment_3");
+					put(grammarAccess.getVariablesAccess().getNameAssignment_1(), "rule__Variables__NameAssignment_1");
+					put(grammarAccess.getVariablesAccess().getDomAssignment_3(), "rule__Variables__DomAssignment_3");
+					put(grammarAccess.getRangeDomAccess().getStartAssignment_1(), "rule__RangeDom__StartAssignment_1");
+					put(grammarAccess.getRangeDomAccess().getEndAssignment_3(), "rule__RangeDom__EndAssignment_3");
+					put(grammarAccess.getSetDomAccess().getListAssignment_2(), "rule__SetDom__ListAssignment_2");
+					put(grammarAccess.getBoolDomAccess().getDomAssignment(), "rule__BoolDom__DomAssignment");
 				}
 			};
 		}

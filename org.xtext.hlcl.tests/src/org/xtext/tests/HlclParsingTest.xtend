@@ -10,13 +10,13 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.xtext.hlcl.Model
+import org.xtext.hlcl.ConstraintProgram
 
 @RunWith(XtextRunner)
 @InjectWith(HlclInjectorProvider)
 class HlclParsingTest {
 	@Inject
-	ParseHelper<Model> parseHelper
+	ParseHelper<ConstraintProgram> parseHelper
 	
 	@Test
 	def void loadModel() {

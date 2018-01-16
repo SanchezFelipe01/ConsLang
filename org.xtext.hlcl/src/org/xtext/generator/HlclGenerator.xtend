@@ -7,8 +7,26 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.xtext.hlcl.Variables
 
+
+import org.xtext.hlcl.ConstraintProgram
+
+//import org.xtext.hlcl.Variable
+import org.xtext.hlcl.Variables
+import org.xtext.hlcl.Dom
+import org.xtext.hlcl.SetDom
+import org.xtext.hlcl.RangeDom
+
+// hlcl imports
+ //import com.variamos.compiler.solverSymbols.ConstraintSymbols;
+ //import com.variamos.compiler.solverSymbols.SWIPrologSymbols;
+// import com.variamos.hlcl.core.HlclProgram;
+// import com.variamos.hlcl.model.domains.IntervalDomain;
+// import com.variamos.hlcl.model.domains.RangeDomain;
+// import com.variamos.hlcl.model.expressions.HlclFactory;
+// import com.variamos.hlcl.model.expressions.Identifier;
+// import com.variamos.hlcl.model.expressions.LiteralBooleanExpression;
+ 
 /**
  * Generates code from your model files on save.
  * 
@@ -17,14 +35,108 @@ import org.xtext.hlcl.Variables
 class HlclGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		
-
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
-
+		fsa.generateFile(resource.className+".java", toJavaCode(resource.contents.head as ConstraintProgram))
+	}
 	
-}
+	def className(Resource res) {
+		var name = res.URI.lastSegment
+		return name.substring(0, name.indexOf('.'))
+	}
+	
+	def toJavaCode(ConstraintProgram pg) '''
+
+		 import com.variamos.hlcl.model.expressions.HlclFactory;
+		 import com.variamos.hlcl.model.expressions.Identifier;
+		 import com.variamos.hlcl.model.domains.*;
+		
+		public class «pg.eResource.className» {
+			
+			public static void main(String[] args) {
+				«pg.eResource.className» obj = new «pg.eResource.className»();
+				obj.run();
+			}
+			
+			public void run() {
+				
+				HlclFactory f = new HlclFactory();
+				
+				«FOR c : pg.vars»
+								«c.declareVars»
+				«ENDFOR»
+				
+«««				boolean executeActions = true;
+«««				String currentState = "«pg.states.head?.name»";
+«««				String lastEvent = null;
+«««				while (true) {
+«««					«FOR state : pg.states»
+«««						«state.generateCode»
+«««					«ENDFOR»
+«««					«FOR resetEvent : pg.resetEvents»
+«««						if ("«resetEvent.name»".equals(lastEvent)) {
+«««							System.out.println("Resetting state machine.");
+«««							currentState = "«pg.states.head?.name»";
+«««							executeActions = true;
+«««						}
+«««					«ENDFOR»
+«««					
+«««				}
+			}
+			
+«««			private String receiveEvent() {
+«««				System.out.flush();
+«««				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+«««				try {
+«««					return br.readLine();
+«««				} catch (IOException ioe) {
+«««					System.out.println("Problem reading input");
+«««					return "";
+«««				}
+«««			}
+		}
+	'''
+	
+		def declareVars(Variables varC) '''
+«««		protected void do«varC.name.toFirstUpper»() {
+			System.out.println("declaring  «varC.name»  with domain «varC.dom»)");
+			
+			Identifier «varC.name» = f.newIdentifier("«varC.name»");
+			«declareDoms(varC.dom, varC.name)»
+			
+		
+	'''
+	def declareDoms(Dom dom, String name) '''
+«««	con esto declaro los distintos tipos de dominios y después los distintos tipos de expresiones :-)
+		«IF dom instanceof RangeDom»
+			«declareRangeDom(dom, name)»
+		«ELSEIF dom instanceof SetDom»
+			«declareSetDom(dom, name)»
+«««		«ELSEIF dom instanceof StringDomain»
+«««			«declareRangeDom(dom, name)»
+		«ELSE»
+		   //se declara un boolDomain
+		   BinaryDomain «name»Dom= new BinaryDomain();
+		    «name».setDomain(«name»Dom);
+		«ENDIF»
+
+	'''
+	def declareRangeDom(RangeDom dom, String name) '''
+		//se declara un RangeDomain
+		RangeDomain «name»Dom= new RangeDomain(«dom.start», «dom.end»);
+		«name».setDomain(«name»Dom);
+		
+	'''
+	def declareSetDom(SetDom dom, String name) '''
+		//se declara un SetDomain	
+		IntervalDomain «name»Dom= new IntervalDomain();
+		«FOR e : dom.list»
+			«name»Dom..add(«e»);
+			//System.out.println(«e»);
+		«ENDFOR»
+		«name».setDomain(«name»Dom);
+	'''
+	def declareStringDom(Dom dom, String name) '''
+		se declara un StringDomain
+	'''
+
+
 }

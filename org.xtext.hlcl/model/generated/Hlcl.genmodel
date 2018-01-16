@@ -6,26 +6,24 @@
     copyrightFields="false" runtimeVersion="2.10">
   <genPackages prefix="Hlcl" basePackage="org.xtext" disposableProviderFactory="true"
       fileExtensions="hlcl" ecorePackage="Hlcl.ecore#/">
-    <genClasses ecoreClass="Hlcl.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hlcl.ecore#//Model/vars"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//Model/constraints"/>
+    <genClasses ecoreClass="Hlcl.ecore#//ConstraintProgram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hlcl.ecore#//ConstraintProgram/vars"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//ConstraintProgram/constraints"/>
     </genClasses>
     <genClasses ecoreClass="Hlcl.ecore#//Variables">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hlcl.ecore#//Variables/vars"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//Variables/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hlcl.ecore#//Variables/dom"/>
     </genClasses>
-    <genClasses ecoreClass="Hlcl.ecore#//Variable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//Variable/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hlcl.ecore#//Variable/dom"/>
+    <genClasses ecoreClass="Hlcl.ecore#//Dom"/>
+    <genClasses ecoreClass="Hlcl.ecore#//RangeDom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//RangeDom/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//RangeDom/end"/>
     </genClasses>
-    <genClasses ecoreClass="Hlcl.ecore#//Domain">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hlcl.ecore#//Domain/dom"/>
+    <genClasses ecoreClass="Hlcl.ecore#//SetDom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//SetDom/list"/>
     </genClasses>
-    <genClasses ecoreClass="Hlcl.ecore#//RangeDomain">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//RangeDomain/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//RangeDomain/end"/>
-    </genClasses>
-    <genClasses ecoreClass="Hlcl.ecore#//SetDomain">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//SetDomain/list"/>
+    <genClasses ecoreClass="Hlcl.ecore#//BoolDom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//BoolDom/dom"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

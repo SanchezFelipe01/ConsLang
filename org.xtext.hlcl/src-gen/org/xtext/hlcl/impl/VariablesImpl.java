@@ -3,22 +3,17 @@
  */
 package org.xtext.hlcl.impl;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.xtext.hlcl.Dom;
 import org.xtext.hlcl.HlclPackage;
-import org.xtext.hlcl.Variable;
 import org.xtext.hlcl.Variables;
 
 /**
@@ -28,7 +23,8 @@ import org.xtext.hlcl.Variables;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xtext.hlcl.impl.VariablesImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.VariablesImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.VariablesImpl#getDom <em>Dom</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,14 +33,34 @@ import org.xtext.hlcl.Variables;
 public class VariablesImpl extends MinimalEObjectImpl.Container implements Variables
 {
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVars()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<Variable> vars;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDom() <em>Dom</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDom()
+   * @generated
+   * @ordered
+   */
+  protected Dom dom;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,13 +88,70 @@ public class VariablesImpl extends MinimalEObjectImpl.Container implements Varia
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Variable> getVars()
+  public String getName()
   {
-    if (vars == null)
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.VARIABLES__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Dom getDom()
+  {
+    return dom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDom(Dom newDom, NotificationChain msgs)
+  {
+    Dom oldDom = dom;
+    dom = newDom;
+    if (eNotificationRequired())
     {
-      vars = new EObjectContainmentEList<Variable>(Variable.class, this, HlclPackage.VARIABLES__VARS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HlclPackage.VARIABLES__DOM, oldDom, newDom);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return vars;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDom(Dom newDom)
+  {
+    if (newDom != dom)
+    {
+      NotificationChain msgs = null;
+      if (dom != null)
+        msgs = ((InternalEObject)dom).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HlclPackage.VARIABLES__DOM, null, msgs);
+      if (newDom != null)
+        msgs = ((InternalEObject)newDom).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HlclPackage.VARIABLES__DOM, null, msgs);
+      msgs = basicSetDom(newDom, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.VARIABLES__DOM, newDom, newDom));
   }
 
   /**
@@ -91,8 +164,8 @@ public class VariablesImpl extends MinimalEObjectImpl.Container implements Varia
   {
     switch (featureID)
     {
-      case HlclPackage.VARIABLES__VARS:
-        return ((InternalEList<?>)getVars()).basicRemove(otherEnd, msgs);
+      case HlclPackage.VARIABLES__DOM:
+        return basicSetDom(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -107,8 +180,10 @@ public class VariablesImpl extends MinimalEObjectImpl.Container implements Varia
   {
     switch (featureID)
     {
-      case HlclPackage.VARIABLES__VARS:
-        return getVars();
+      case HlclPackage.VARIABLES__NAME:
+        return getName();
+      case HlclPackage.VARIABLES__DOM:
+        return getDom();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,15 +193,16 @@ public class VariablesImpl extends MinimalEObjectImpl.Container implements Varia
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case HlclPackage.VARIABLES__VARS:
-        getVars().clear();
-        getVars().addAll((Collection<? extends Variable>)newValue);
+      case HlclPackage.VARIABLES__NAME:
+        setName((String)newValue);
+        return;
+      case HlclPackage.VARIABLES__DOM:
+        setDom((Dom)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +218,11 @@ public class VariablesImpl extends MinimalEObjectImpl.Container implements Varia
   {
     switch (featureID)
     {
-      case HlclPackage.VARIABLES__VARS:
-        getVars().clear();
+      case HlclPackage.VARIABLES__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case HlclPackage.VARIABLES__DOM:
+        setDom((Dom)null);
         return;
     }
     super.eUnset(featureID);
@@ -159,10 +238,29 @@ public class VariablesImpl extends MinimalEObjectImpl.Container implements Varia
   {
     switch (featureID)
     {
-      case HlclPackage.VARIABLES__VARS:
-        return vars != null && !vars.isEmpty();
+      case HlclPackage.VARIABLES__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case HlclPackage.VARIABLES__DOM:
+        return dom != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //VariablesImpl

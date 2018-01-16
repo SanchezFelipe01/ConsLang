@@ -76,9 +76,9 @@ public class HlclAdapterFactory extends AdapterFactoryImpl
     new HlclSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
+      public Adapter caseConstraintProgram(ConstraintProgram object)
       {
-        return createModelAdapter();
+        return createConstraintProgramAdapter();
       }
       @Override
       public Adapter caseVariables(Variables object)
@@ -86,24 +86,24 @@ public class HlclAdapterFactory extends AdapterFactoryImpl
         return createVariablesAdapter();
       }
       @Override
-      public Adapter caseVariable(Variable object)
+      public Adapter caseDom(Dom object)
       {
-        return createVariableAdapter();
+        return createDomAdapter();
       }
       @Override
-      public Adapter caseDomain(Domain object)
+      public Adapter caseRangeDom(RangeDom object)
       {
-        return createDomainAdapter();
+        return createRangeDomAdapter();
       }
       @Override
-      public Adapter caseRangeDomain(RangeDomain object)
+      public Adapter caseSetDom(SetDom object)
       {
-        return createRangeDomainAdapter();
+        return createSetDomAdapter();
       }
       @Override
-      public Adapter caseSetDomain(SetDomain object)
+      public Adapter caseBoolDom(BoolDom object)
       {
-        return createSetDomainAdapter();
+        return createBoolDomAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -128,16 +128,16 @@ public class HlclAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.ConstraintProgram <em>Constraint Program</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.hlcl.Model
+   * @see org.xtext.hlcl.ConstraintProgram
    * @generated
    */
-  public Adapter createModelAdapter()
+  public Adapter createConstraintProgramAdapter()
   {
     return null;
   }
@@ -158,61 +158,61 @@ public class HlclAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.Variable <em>Variable</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.Dom <em>Dom</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.hlcl.Variable
+   * @see org.xtext.hlcl.Dom
    * @generated
    */
-  public Adapter createVariableAdapter()
+  public Adapter createDomAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.Domain <em>Domain</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.RangeDom <em>Range Dom</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.hlcl.Domain
+   * @see org.xtext.hlcl.RangeDom
    * @generated
    */
-  public Adapter createDomainAdapter()
+  public Adapter createRangeDomAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.RangeDomain <em>Range Domain</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.SetDom <em>Set Dom</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.hlcl.RangeDomain
+   * @see org.xtext.hlcl.SetDom
    * @generated
    */
-  public Adapter createRangeDomainAdapter()
+  public Adapter createSetDomAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.SetDomain <em>Set Domain</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.BoolDom <em>Bool Dom</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.hlcl.SetDomain
+   * @see org.xtext.hlcl.BoolDom
    * @generated
    */
-  public Adapter createSetDomainAdapter()
+  public Adapter createBoolDomAdapter()
   {
     return null;
   }

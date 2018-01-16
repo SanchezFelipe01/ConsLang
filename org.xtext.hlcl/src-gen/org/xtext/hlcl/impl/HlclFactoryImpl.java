@@ -65,12 +65,12 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
   {
     switch (eClass.getClassifierID())
     {
-      case HlclPackage.MODEL: return createModel();
+      case HlclPackage.CONSTRAINT_PROGRAM: return createConstraintProgram();
       case HlclPackage.VARIABLES: return createVariables();
-      case HlclPackage.VARIABLE: return createVariable();
-      case HlclPackage.DOMAIN: return createDomain();
-      case HlclPackage.RANGE_DOMAIN: return createRangeDomain();
-      case HlclPackage.SET_DOMAIN: return createSetDomain();
+      case HlclPackage.DOM: return createDom();
+      case HlclPackage.RANGE_DOM: return createRangeDom();
+      case HlclPackage.SET_DOM: return createSetDom();
+      case HlclPackage.BOOL_DOM: return createBoolDom();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -81,10 +81,10 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Model createModel()
+  public ConstraintProgram createConstraintProgram()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
+    ConstraintProgramImpl constraintProgram = new ConstraintProgramImpl();
+    return constraintProgram;
   }
 
   /**
@@ -103,10 +103,10 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable createVariable()
+  public Dom createDom()
   {
-    VariableImpl variable = new VariableImpl();
-    return variable;
+    DomImpl dom = new DomImpl();
+    return dom;
   }
 
   /**
@@ -114,10 +114,10 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Domain createDomain()
+  public RangeDom createRangeDom()
   {
-    DomainImpl domain = new DomainImpl();
-    return domain;
+    RangeDomImpl rangeDom = new RangeDomImpl();
+    return rangeDom;
   }
 
   /**
@@ -125,10 +125,10 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RangeDomain createRangeDomain()
+  public SetDom createSetDom()
   {
-    RangeDomainImpl rangeDomain = new RangeDomainImpl();
-    return rangeDomain;
+    SetDomImpl setDom = new SetDomImpl();
+    return setDom;
   }
 
   /**
@@ -136,10 +136,10 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public SetDomain createSetDomain()
+  public BoolDom createBoolDom()
   {
-    SetDomainImpl setDomain = new SetDomainImpl();
-    return setDomain;
+    BoolDomImpl boolDom = new BoolDomImpl();
+    return boolDom;
   }
 
   /**

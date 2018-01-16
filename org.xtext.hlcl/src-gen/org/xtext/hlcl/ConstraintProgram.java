@@ -9,22 +9,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Model</b></em>'.
+ * A representation of the model object '<em><b>Constraint Program</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.xtext.hlcl.Model#getVars <em>Vars</em>}</li>
- *   <li>{@link org.xtext.hlcl.Model#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.xtext.hlcl.ConstraintProgram#getVars <em>Vars</em>}</li>
+ *   <li>{@link org.xtext.hlcl.ConstraintProgram#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.xtext.hlcl.HlclPackage#getModel()
+ * @see org.xtext.hlcl.HlclPackage#getConstraintProgram()
  * @model
  * @generated
  */
-public interface Model extends EObject
+public interface ConstraintProgram extends EObject
 {
   /**
    * Returns the value of the '<em><b>Vars</b></em>' containment reference list.
@@ -36,7 +36,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Vars</em>' containment reference list.
-   * @see org.xtext.hlcl.HlclPackage#getModel_Vars()
+   * @see org.xtext.hlcl.HlclPackage#getConstraintProgram_Vars()
    * @model containment="true"
    * @generated
    */
@@ -52,10 +52,10 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Constraints</em>' attribute list.
-   * @see org.xtext.hlcl.HlclPackage#getModel_Constraints()
+   * @see org.xtext.hlcl.HlclPackage#getConstraintProgram_Constraints()
    * @model unique="false"
    * @generated
    */
   EList<String> getConstraints();
 
-} // Model
+} // ConstraintProgram

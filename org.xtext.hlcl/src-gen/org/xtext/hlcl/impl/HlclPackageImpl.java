@@ -10,13 +10,13 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.hlcl.Domain;
+import org.xtext.hlcl.BoolDom;
+import org.xtext.hlcl.ConstraintProgram;
+import org.xtext.hlcl.Dom;
 import org.xtext.hlcl.HlclFactory;
 import org.xtext.hlcl.HlclPackage;
-import org.xtext.hlcl.Model;
-import org.xtext.hlcl.RangeDomain;
-import org.xtext.hlcl.SetDomain;
-import org.xtext.hlcl.Variable;
+import org.xtext.hlcl.RangeDom;
+import org.xtext.hlcl.SetDom;
 import org.xtext.hlcl.Variables;
 
 /**
@@ -32,7 +32,7 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelEClass = null;
+  private EClass constraintProgramEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -46,28 +46,28 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass variableEClass = null;
+  private EClass domEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass domainEClass = null;
+  private EClass rangeDomEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass rangeDomainEClass = null;
+  private EClass setDomEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass setDomainEClass = null;
+  private EClass boolDomEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -137,9 +137,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModel()
+  public EClass getConstraintProgram()
   {
-    return modelEClass;
+    return constraintProgramEClass;
   }
 
   /**
@@ -147,9 +147,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Vars()
+  public EReference getConstraintProgram_Vars()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+    return (EReference)constraintProgramEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -157,9 +157,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModel_Constraints()
+  public EAttribute getConstraintProgram_Constraints()
   {
-    return (EAttribute)modelEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)constraintProgramEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -177,9 +177,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariables_Vars()
+  public EAttribute getVariables_Name()
   {
-    return (EReference)variablesEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variablesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -187,9 +187,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVariable()
+  public EReference getVariables_Dom()
   {
-    return variableEClass;
+    return (EReference)variablesEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -197,9 +197,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariable_Name()
+  public EClass getDom()
   {
-    return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
+    return domEClass;
   }
 
   /**
@@ -207,9 +207,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariable_Dom()
+  public EClass getRangeDom()
   {
-    return (EReference)variableEClass.getEStructuralFeatures().get(1);
+    return rangeDomEClass;
   }
 
   /**
@@ -217,9 +217,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDomain()
+  public EAttribute getRangeDom_Start()
   {
-    return domainEClass;
+    return (EAttribute)rangeDomEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -227,9 +227,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomain_Dom()
+  public EAttribute getRangeDom_End()
   {
-    return (EReference)domainEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)rangeDomEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -237,9 +237,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRangeDomain()
+  public EClass getSetDom()
   {
-    return rangeDomainEClass;
+    return setDomEClass;
   }
 
   /**
@@ -247,9 +247,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRangeDomain_Start()
+  public EAttribute getSetDom_List()
   {
-    return (EAttribute)rangeDomainEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)setDomEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -257,9 +257,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRangeDomain_End()
+  public EClass getBoolDom()
   {
-    return (EAttribute)rangeDomainEClass.getEStructuralFeatures().get(1);
+    return boolDomEClass;
   }
 
   /**
@@ -267,19 +267,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSetDomain()
+  public EAttribute getBoolDom_Dom()
   {
-    return setDomainEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSetDomain_List()
-  {
-    return (EAttribute)setDomainEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)boolDomEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -312,26 +302,25 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__VARS);
-    createEAttribute(modelEClass, MODEL__CONSTRAINTS);
+    constraintProgramEClass = createEClass(CONSTRAINT_PROGRAM);
+    createEReference(constraintProgramEClass, CONSTRAINT_PROGRAM__VARS);
+    createEAttribute(constraintProgramEClass, CONSTRAINT_PROGRAM__CONSTRAINTS);
 
     variablesEClass = createEClass(VARIABLES);
-    createEReference(variablesEClass, VARIABLES__VARS);
+    createEAttribute(variablesEClass, VARIABLES__NAME);
+    createEReference(variablesEClass, VARIABLES__DOM);
 
-    variableEClass = createEClass(VARIABLE);
-    createEAttribute(variableEClass, VARIABLE__NAME);
-    createEReference(variableEClass, VARIABLE__DOM);
+    domEClass = createEClass(DOM);
 
-    domainEClass = createEClass(DOMAIN);
-    createEReference(domainEClass, DOMAIN__DOM);
+    rangeDomEClass = createEClass(RANGE_DOM);
+    createEAttribute(rangeDomEClass, RANGE_DOM__START);
+    createEAttribute(rangeDomEClass, RANGE_DOM__END);
 
-    rangeDomainEClass = createEClass(RANGE_DOMAIN);
-    createEAttribute(rangeDomainEClass, RANGE_DOMAIN__START);
-    createEAttribute(rangeDomainEClass, RANGE_DOMAIN__END);
+    setDomEClass = createEClass(SET_DOM);
+    createEAttribute(setDomEClass, SET_DOM__LIST);
 
-    setDomainEClass = createEClass(SET_DOMAIN);
-    createEAttribute(setDomainEClass, SET_DOMAIN__LIST);
+    boolDomEClass = createEClass(BOOL_DOM);
+    createEAttribute(boolDomEClass, BOOL_DOM__DOM);
   }
 
   /**
@@ -363,28 +352,30 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    rangeDomEClass.getESuperTypes().add(this.getDom());
+    setDomEClass.getESuperTypes().add(this.getDom());
+    boolDomEClass.getESuperTypes().add(this.getDom());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Vars(), this.getVariables(), null, "vars", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getModel_Constraints(), ecorePackage.getEString(), "constraints", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(constraintProgramEClass, ConstraintProgram.class, "ConstraintProgram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstraintProgram_Vars(), this.getVariables(), null, "vars", null, 0, -1, ConstraintProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstraintProgram_Constraints(), ecorePackage.getEString(), "constraints", null, 0, -1, ConstraintProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variablesEClass, Variables.class, "Variables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariables_Vars(), this.getVariable(), null, "vars", null, 0, -1, Variables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariables_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariables_Dom(), this.getDom(), null, "dom", null, 0, 1, Variables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariable_Dom(), this.getDomain(), null, "dom", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(domEClass, Dom.class, "Dom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDomain_Dom(), ecorePackage.getEObject(), null, "dom", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(rangeDomEClass, RangeDom.class, "RangeDom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRangeDom_Start(), ecorePackage.getEInt(), "start", null, 0, 1, RangeDom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRangeDom_End(), ecorePackage.getEInt(), "end", null, 0, 1, RangeDom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(rangeDomainEClass, RangeDomain.class, "RangeDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRangeDomain_Start(), ecorePackage.getEInt(), "start", null, 0, 1, RangeDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRangeDomain_End(), ecorePackage.getEInt(), "end", null, 0, 1, RangeDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(setDomEClass, SetDom.class, "SetDom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSetDom_List(), ecorePackage.getEInt(), "list", null, 0, -1, SetDom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(setDomainEClass, SetDomain.class, "SetDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSetDomain_List(), ecorePackage.getEInt(), "list", null, 0, 1, SetDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(boolDomEClass, BoolDom.class, "BoolDom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBoolDom_Dom(), ecorePackage.getEString(), "dom", null, 0, 1, BoolDom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

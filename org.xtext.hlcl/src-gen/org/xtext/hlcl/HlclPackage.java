@@ -58,14 +58,14 @@ public interface HlclPackage extends EPackage
   HlclPackage eINSTANCE = org.xtext.hlcl.impl.HlclPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.xtext.hlcl.impl.ModelImpl <em>Model</em>}' class.
+   * The meta object id for the '{@link org.xtext.hlcl.impl.ConstraintProgramImpl <em>Constraint Program</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.hlcl.impl.ModelImpl
-   * @see org.xtext.hlcl.impl.HlclPackageImpl#getModel()
+   * @see org.xtext.hlcl.impl.ConstraintProgramImpl
+   * @see org.xtext.hlcl.impl.HlclPackageImpl#getConstraintProgram()
    * @generated
    */
-  int MODEL = 0;
+  int CONSTRAINT_PROGRAM = 0;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -74,7 +74,7 @@ public interface HlclPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__VARS = 0;
+  int CONSTRAINT_PROGRAM__VARS = 0;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' attribute list.
@@ -83,16 +83,16 @@ public interface HlclPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__CONSTRAINTS = 1;
+  int CONSTRAINT_PROGRAM__CONSTRAINTS = 1;
 
   /**
-   * The number of structural features of the '<em>Model</em>' class.
+   * The number of structural features of the '<em>Constraint Program</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 2;
+  int CONSTRAINT_PROGRAM_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.hlcl.impl.VariablesImpl <em>Variables</em>}' class.
@@ -105,13 +105,22 @@ public interface HlclPackage extends EPackage
   int VARIABLES = 1;
 
   /**
-   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLES__VARS = 0;
+  int VARIABLES__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Dom</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLES__DOM = 1;
 
   /**
    * The number of structural features of the '<em>Variables</em>' class.
@@ -120,82 +129,36 @@ public interface HlclPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLES_FEATURE_COUNT = 1;
+  int VARIABLES_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.hlcl.impl.VariableImpl <em>Variable</em>}' class.
+   * The meta object id for the '{@link org.xtext.hlcl.impl.DomImpl <em>Dom</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.hlcl.impl.VariableImpl
-   * @see org.xtext.hlcl.impl.HlclPackageImpl#getVariable()
+   * @see org.xtext.hlcl.impl.DomImpl
+   * @see org.xtext.hlcl.impl.HlclPackageImpl#getDom()
    * @generated
    */
-  int VARIABLE = 2;
+  int DOM = 2;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Dom</b></em>' containment reference.
+   * The number of structural features of the '<em>Dom</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE__DOM = 1;
+  int DOM_FEATURE_COUNT = 0;
 
   /**
-   * The number of structural features of the '<em>Variable</em>' class.
+   * The meta object id for the '{@link org.xtext.hlcl.impl.RangeDomImpl <em>Range Dom</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.xtext.hlcl.impl.DomainImpl <em>Domain</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.hlcl.impl.DomainImpl
-   * @see org.xtext.hlcl.impl.HlclPackageImpl#getDomain()
+   * @see org.xtext.hlcl.impl.RangeDomImpl
+   * @see org.xtext.hlcl.impl.HlclPackageImpl#getRangeDom()
    * @generated
    */
-  int DOMAIN = 3;
-
-  /**
-   * The feature id for the '<em><b>Dom</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOMAIN__DOM = 0;
-
-  /**
-   * The number of structural features of the '<em>Domain</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOMAIN_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.hlcl.impl.RangeDomainImpl <em>Range Domain</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.hlcl.impl.RangeDomainImpl
-   * @see org.xtext.hlcl.impl.HlclPackageImpl#getRangeDomain()
-   * @generated
-   */
-  int RANGE_DOMAIN = 4;
+  int RANGE_DOM = 3;
 
   /**
    * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -204,7 +167,7 @@ public interface HlclPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RANGE_DOMAIN__START = 0;
+  int RANGE_DOM__START = DOM_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>End</b></em>' attribute.
@@ -213,77 +176,105 @@ public interface HlclPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RANGE_DOMAIN__END = 1;
+  int RANGE_DOM__END = DOM_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Range Domain</em>' class.
+   * The number of structural features of the '<em>Range Dom</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RANGE_DOMAIN_FEATURE_COUNT = 2;
+  int RANGE_DOM_FEATURE_COUNT = DOM_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.hlcl.impl.SetDomainImpl <em>Set Domain</em>}' class.
+   * The meta object id for the '{@link org.xtext.hlcl.impl.SetDomImpl <em>Set Dom</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.hlcl.impl.SetDomainImpl
-   * @see org.xtext.hlcl.impl.HlclPackageImpl#getSetDomain()
+   * @see org.xtext.hlcl.impl.SetDomImpl
+   * @see org.xtext.hlcl.impl.HlclPackageImpl#getSetDom()
    * @generated
    */
-  int SET_DOMAIN = 5;
+  int SET_DOM = 4;
 
   /**
-   * The feature id for the '<em><b>List</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SET_DOMAIN__LIST = 0;
-
-  /**
-   * The number of structural features of the '<em>Set Domain</em>' class.
+   * The feature id for the '<em><b>List</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SET_DOMAIN_FEATURE_COUNT = 1;
-
+  int SET_DOM__LIST = DOM_FEATURE_COUNT + 0;
 
   /**
-   * Returns the meta object for class '{@link org.xtext.hlcl.Model <em>Model</em>}'.
+   * The number of structural features of the '<em>Set Dom</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model</em>'.
-   * @see org.xtext.hlcl.Model
    * @generated
+   * @ordered
    */
-  EClass getModel();
+  int SET_DOM_FEATURE_COUNT = DOM_FEATURE_COUNT + 1;
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.hlcl.Model#getVars <em>Vars</em>}'.
+   * The meta object id for the '{@link org.xtext.hlcl.impl.BoolDomImpl <em>Bool Dom</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.hlcl.impl.BoolDomImpl
+   * @see org.xtext.hlcl.impl.HlclPackageImpl#getBoolDom()
+   * @generated
+   */
+  int BOOL_DOM = 5;
+
+  /**
+   * The feature id for the '<em><b>Dom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOL_DOM__DOM = DOM_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Bool Dom</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOL_DOM_FEATURE_COUNT = DOM_FEATURE_COUNT + 1;
+
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.hlcl.ConstraintProgram <em>Constraint Program</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constraint Program</em>'.
+   * @see org.xtext.hlcl.ConstraintProgram
+   * @generated
+   */
+  EClass getConstraintProgram();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.hlcl.ConstraintProgram#getVars <em>Vars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Vars</em>'.
-   * @see org.xtext.hlcl.Model#getVars()
-   * @see #getModel()
+   * @see org.xtext.hlcl.ConstraintProgram#getVars()
+   * @see #getConstraintProgram()
    * @generated
    */
-  EReference getModel_Vars();
+  EReference getConstraintProgram_Vars();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.xtext.hlcl.Model#getConstraints <em>Constraints</em>}'.
+   * Returns the meta object for the attribute list '{@link org.xtext.hlcl.ConstraintProgram#getConstraints <em>Constraints</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Constraints</em>'.
-   * @see org.xtext.hlcl.Model#getConstraints()
-   * @see #getModel()
+   * @see org.xtext.hlcl.ConstraintProgram#getConstraints()
+   * @see #getConstraintProgram()
    * @generated
    */
-  EAttribute getModel_Constraints();
+  EAttribute getConstraintProgram_Constraints();
 
   /**
    * Returns the meta object for class '{@link org.xtext.hlcl.Variables <em>Variables</em>}'.
@@ -296,121 +287,110 @@ public interface HlclPackage extends EPackage
   EClass getVariables();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.hlcl.Variables#getVars <em>Vars</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Vars</em>'.
-   * @see org.xtext.hlcl.Variables#getVars()
-   * @see #getVariables()
-   * @generated
-   */
-  EReference getVariables_Vars();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.hlcl.Variable <em>Variable</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Variable</em>'.
-   * @see org.xtext.hlcl.Variable
-   * @generated
-   */
-  EClass getVariable();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.hlcl.Variable#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.hlcl.Variables#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.hlcl.Variable#getName()
-   * @see #getVariable()
+   * @see org.xtext.hlcl.Variables#getName()
+   * @see #getVariables()
    * @generated
    */
-  EAttribute getVariable_Name();
+  EAttribute getVariables_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.hlcl.Variable#getDom <em>Dom</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.hlcl.Variables#getDom <em>Dom</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Dom</em>'.
-   * @see org.xtext.hlcl.Variable#getDom()
-   * @see #getVariable()
+   * @see org.xtext.hlcl.Variables#getDom()
+   * @see #getVariables()
    * @generated
    */
-  EReference getVariable_Dom();
+  EReference getVariables_Dom();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.hlcl.Domain <em>Domain</em>}'.
+   * Returns the meta object for class '{@link org.xtext.hlcl.Dom <em>Dom</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Domain</em>'.
-   * @see org.xtext.hlcl.Domain
+   * @return the meta object for class '<em>Dom</em>'.
+   * @see org.xtext.hlcl.Dom
    * @generated
    */
-  EClass getDomain();
+  EClass getDom();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.hlcl.Domain#getDom <em>Dom</em>}'.
+   * Returns the meta object for class '{@link org.xtext.hlcl.RangeDom <em>Range Dom</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Dom</em>'.
-   * @see org.xtext.hlcl.Domain#getDom()
-   * @see #getDomain()
+   * @return the meta object for class '<em>Range Dom</em>'.
+   * @see org.xtext.hlcl.RangeDom
    * @generated
    */
-  EReference getDomain_Dom();
+  EClass getRangeDom();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.hlcl.RangeDomain <em>Range Domain</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Range Domain</em>'.
-   * @see org.xtext.hlcl.RangeDomain
-   * @generated
-   */
-  EClass getRangeDomain();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.hlcl.RangeDomain#getStart <em>Start</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.hlcl.RangeDom#getStart <em>Start</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Start</em>'.
-   * @see org.xtext.hlcl.RangeDomain#getStart()
-   * @see #getRangeDomain()
+   * @see org.xtext.hlcl.RangeDom#getStart()
+   * @see #getRangeDom()
    * @generated
    */
-  EAttribute getRangeDomain_Start();
+  EAttribute getRangeDom_Start();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.hlcl.RangeDomain#getEnd <em>End</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.hlcl.RangeDom#getEnd <em>End</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>End</em>'.
-   * @see org.xtext.hlcl.RangeDomain#getEnd()
-   * @see #getRangeDomain()
+   * @see org.xtext.hlcl.RangeDom#getEnd()
+   * @see #getRangeDom()
    * @generated
    */
-  EAttribute getRangeDomain_End();
+  EAttribute getRangeDom_End();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.hlcl.SetDomain <em>Set Domain</em>}'.
+   * Returns the meta object for class '{@link org.xtext.hlcl.SetDom <em>Set Dom</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Set Domain</em>'.
-   * @see org.xtext.hlcl.SetDomain
+   * @return the meta object for class '<em>Set Dom</em>'.
+   * @see org.xtext.hlcl.SetDom
    * @generated
    */
-  EClass getSetDomain();
+  EClass getSetDom();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.hlcl.SetDomain#getList <em>List</em>}'.
+   * Returns the meta object for the attribute list '{@link org.xtext.hlcl.SetDom#getList <em>List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>List</em>'.
-   * @see org.xtext.hlcl.SetDomain#getList()
-   * @see #getSetDomain()
+   * @return the meta object for the attribute list '<em>List</em>'.
+   * @see org.xtext.hlcl.SetDom#getList()
+   * @see #getSetDom()
    * @generated
    */
-  EAttribute getSetDomain_List();
+  EAttribute getSetDom_List();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.hlcl.BoolDom <em>Bool Dom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bool Dom</em>'.
+   * @see org.xtext.hlcl.BoolDom
+   * @generated
+   */
+  EClass getBoolDom();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.hlcl.BoolDom#getDom <em>Dom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Dom</em>'.
+   * @see org.xtext.hlcl.BoolDom#getDom()
+   * @see #getBoolDom()
+   * @generated
+   */
+  EAttribute getBoolDom_Dom();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -436,14 +416,14 @@ public interface HlclPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.xtext.hlcl.impl.ModelImpl <em>Model</em>}' class.
+     * The meta object literal for the '{@link org.xtext.hlcl.impl.ConstraintProgramImpl <em>Constraint Program</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.hlcl.impl.ModelImpl
-     * @see org.xtext.hlcl.impl.HlclPackageImpl#getModel()
+     * @see org.xtext.hlcl.impl.ConstraintProgramImpl
+     * @see org.xtext.hlcl.impl.HlclPackageImpl#getConstraintProgram()
      * @generated
      */
-    EClass MODEL = eINSTANCE.getModel();
+    EClass CONSTRAINT_PROGRAM = eINSTANCE.getConstraintProgram();
 
     /**
      * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
@@ -451,7 +431,7 @@ public interface HlclPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__VARS = eINSTANCE.getModel_Vars();
+    EReference CONSTRAINT_PROGRAM__VARS = eINSTANCE.getConstraintProgram_Vars();
 
     /**
      * The meta object literal for the '<em><b>Constraints</b></em>' attribute list feature.
@@ -459,7 +439,7 @@ public interface HlclPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODEL__CONSTRAINTS = eINSTANCE.getModel_Constraints();
+    EAttribute CONSTRAINT_PROGRAM__CONSTRAINTS = eINSTANCE.getConstraintProgram_Constraints();
 
     /**
      * The meta object literal for the '{@link org.xtext.hlcl.impl.VariablesImpl <em>Variables</em>}' class.
@@ -472,30 +452,12 @@ public interface HlclPackage extends EPackage
     EClass VARIABLES = eINSTANCE.getVariables();
 
     /**
-     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VARIABLES__VARS = eINSTANCE.getVariables_Vars();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.hlcl.impl.VariableImpl <em>Variable</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.hlcl.impl.VariableImpl
-     * @see org.xtext.hlcl.impl.HlclPackageImpl#getVariable()
-     * @generated
-     */
-    EClass VARIABLE = eINSTANCE.getVariable();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+    EAttribute VARIABLES__NAME = eINSTANCE.getVariables_Name();
 
     /**
      * The meta object literal for the '<em><b>Dom</b></em>' containment reference feature.
@@ -503,35 +465,27 @@ public interface HlclPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VARIABLE__DOM = eINSTANCE.getVariable_Dom();
+    EReference VARIABLES__DOM = eINSTANCE.getVariables_Dom();
 
     /**
-     * The meta object literal for the '{@link org.xtext.hlcl.impl.DomainImpl <em>Domain</em>}' class.
+     * The meta object literal for the '{@link org.xtext.hlcl.impl.DomImpl <em>Dom</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.hlcl.impl.DomainImpl
-     * @see org.xtext.hlcl.impl.HlclPackageImpl#getDomain()
+     * @see org.xtext.hlcl.impl.DomImpl
+     * @see org.xtext.hlcl.impl.HlclPackageImpl#getDom()
      * @generated
      */
-    EClass DOMAIN = eINSTANCE.getDomain();
+    EClass DOM = eINSTANCE.getDom();
 
     /**
-     * The meta object literal for the '<em><b>Dom</b></em>' containment reference feature.
+     * The meta object literal for the '{@link org.xtext.hlcl.impl.RangeDomImpl <em>Range Dom</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.xtext.hlcl.impl.RangeDomImpl
+     * @see org.xtext.hlcl.impl.HlclPackageImpl#getRangeDom()
      * @generated
      */
-    EReference DOMAIN__DOM = eINSTANCE.getDomain_Dom();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.hlcl.impl.RangeDomainImpl <em>Range Domain</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.hlcl.impl.RangeDomainImpl
-     * @see org.xtext.hlcl.impl.HlclPackageImpl#getRangeDomain()
-     * @generated
-     */
-    EClass RANGE_DOMAIN = eINSTANCE.getRangeDomain();
+    EClass RANGE_DOM = eINSTANCE.getRangeDom();
 
     /**
      * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
@@ -539,7 +493,7 @@ public interface HlclPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RANGE_DOMAIN__START = eINSTANCE.getRangeDomain_Start();
+    EAttribute RANGE_DOM__START = eINSTANCE.getRangeDom_Start();
 
     /**
      * The meta object literal for the '<em><b>End</b></em>' attribute feature.
@@ -547,25 +501,43 @@ public interface HlclPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RANGE_DOMAIN__END = eINSTANCE.getRangeDomain_End();
+    EAttribute RANGE_DOM__END = eINSTANCE.getRangeDom_End();
 
     /**
-     * The meta object literal for the '{@link org.xtext.hlcl.impl.SetDomainImpl <em>Set Domain</em>}' class.
+     * The meta object literal for the '{@link org.xtext.hlcl.impl.SetDomImpl <em>Set Dom</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.hlcl.impl.SetDomainImpl
-     * @see org.xtext.hlcl.impl.HlclPackageImpl#getSetDomain()
+     * @see org.xtext.hlcl.impl.SetDomImpl
+     * @see org.xtext.hlcl.impl.HlclPackageImpl#getSetDom()
      * @generated
      */
-    EClass SET_DOMAIN = eINSTANCE.getSetDomain();
+    EClass SET_DOM = eINSTANCE.getSetDom();
 
     /**
-     * The meta object literal for the '<em><b>List</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>List</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SET_DOMAIN__LIST = eINSTANCE.getSetDomain_List();
+    EAttribute SET_DOM__LIST = eINSTANCE.getSetDom_List();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.hlcl.impl.BoolDomImpl <em>Bool Dom</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.hlcl.impl.BoolDomImpl
+     * @see org.xtext.hlcl.impl.HlclPackageImpl#getBoolDom()
+     * @generated
+     */
+    EClass BOOL_DOM = eINSTANCE.getBoolDom();
+
+    /**
+     * The meta object literal for the '<em><b>Dom</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOL_DOM__DOM = eINSTANCE.getBoolDom_Dom();
 
   }
 

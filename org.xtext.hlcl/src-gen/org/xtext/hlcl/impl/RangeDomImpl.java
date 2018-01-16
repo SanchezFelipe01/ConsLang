@@ -8,26 +8,25 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.hlcl.HlclPackage;
-import org.xtext.hlcl.RangeDomain;
+import org.xtext.hlcl.RangeDom;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Range Domain</b></em>'.
+ * An implementation of the model object '<em><b>Range Dom</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xtext.hlcl.impl.RangeDomainImpl#getStart <em>Start</em>}</li>
- *   <li>{@link org.xtext.hlcl.impl.RangeDomainImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.RangeDomImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.xtext.hlcl.impl.RangeDomImpl#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RangeDomainImpl extends MinimalEObjectImpl.Container implements RangeDomain
+public class RangeDomImpl extends DomImpl implements RangeDom
 {
   /**
    * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
@@ -74,7 +73,7 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RangeDomainImpl()
+  protected RangeDomImpl()
   {
     super();
   }
@@ -87,7 +86,7 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
   @Override
   protected EClass eStaticClass()
   {
-    return HlclPackage.Literals.RANGE_DOMAIN;
+    return HlclPackage.Literals.RANGE_DOM;
   }
 
   /**
@@ -110,7 +109,7 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
     int oldStart = start;
     start = newStart;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.RANGE_DOMAIN__START, oldStart, start));
+      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.RANGE_DOM__START, oldStart, start));
   }
 
   /**
@@ -133,7 +132,7 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
     int oldEnd = end;
     end = newEnd;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.RANGE_DOMAIN__END, oldEnd, end));
+      eNotify(new ENotificationImpl(this, Notification.SET, HlclPackage.RANGE_DOM__END, oldEnd, end));
   }
 
   /**
@@ -146,9 +145,9 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
   {
     switch (featureID)
     {
-      case HlclPackage.RANGE_DOMAIN__START:
+      case HlclPackage.RANGE_DOM__START:
         return getStart();
-      case HlclPackage.RANGE_DOMAIN__END:
+      case HlclPackage.RANGE_DOM__END:
         return getEnd();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -164,10 +163,10 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
   {
     switch (featureID)
     {
-      case HlclPackage.RANGE_DOMAIN__START:
+      case HlclPackage.RANGE_DOM__START:
         setStart((Integer)newValue);
         return;
-      case HlclPackage.RANGE_DOMAIN__END:
+      case HlclPackage.RANGE_DOM__END:
         setEnd((Integer)newValue);
         return;
     }
@@ -184,10 +183,10 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
   {
     switch (featureID)
     {
-      case HlclPackage.RANGE_DOMAIN__START:
+      case HlclPackage.RANGE_DOM__START:
         setStart(START_EDEFAULT);
         return;
-      case HlclPackage.RANGE_DOMAIN__END:
+      case HlclPackage.RANGE_DOM__END:
         setEnd(END_EDEFAULT);
         return;
     }
@@ -204,9 +203,9 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
   {
     switch (featureID)
     {
-      case HlclPackage.RANGE_DOMAIN__START:
+      case HlclPackage.RANGE_DOM__START:
         return start != START_EDEFAULT;
-      case HlclPackage.RANGE_DOMAIN__END:
+      case HlclPackage.RANGE_DOM__END:
         return end != END_EDEFAULT;
     }
     return super.eIsSet(featureID);
@@ -231,4 +230,4 @@ public class RangeDomainImpl extends MinimalEObjectImpl.Container implements Ran
     return result.toString();
   }
 
-} //RangeDomainImpl
+} //RangeDomImpl
