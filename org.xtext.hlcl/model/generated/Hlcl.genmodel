@@ -25,5 +25,8 @@
     <genClasses ecoreClass="Hlcl.ecore#//BoolDom">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//BoolDom/dom"/>
     </genClasses>
+    <genClasses ecoreClass="Hlcl.ecore#//StringDom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hlcl.ecore#//StringDom/list"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

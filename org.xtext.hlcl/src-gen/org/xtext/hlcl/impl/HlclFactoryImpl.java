@@ -71,6 +71,7 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
       case HlclPackage.RANGE_DOM: return createRangeDom();
       case HlclPackage.SET_DOM: return createSetDom();
       case HlclPackage.BOOL_DOM: return createBoolDom();
+      case HlclPackage.STRING_DOM: return createStringDom();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -140,6 +141,17 @@ public class HlclFactoryImpl extends EFactoryImpl implements HlclFactory
   {
     BoolDomImpl boolDom = new BoolDomImpl();
     return boolDom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringDom createStringDom()
+  {
+    StringDomImpl stringDom = new StringDomImpl();
+    return stringDom;
   }
 
   /**

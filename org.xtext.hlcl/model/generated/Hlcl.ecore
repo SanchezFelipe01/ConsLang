@@ -23,4 +23,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="BoolDom" eSuperTypes="#//Dom">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringDom" eSuperTypes="#//Dom">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="list" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

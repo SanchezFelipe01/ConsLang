@@ -106,6 +106,11 @@ public class HlclAdapterFactory extends AdapterFactoryImpl
         return createBoolDomAdapter();
       }
       @Override
+      public Adapter caseStringDom(StringDom object)
+      {
+        return createStringDomAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -213,6 +218,21 @@ public class HlclAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBoolDomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.hlcl.StringDom <em>String Dom</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.hlcl.StringDom
+   * @generated
+   */
+  public Adapter createStringDomAdapter()
   {
     return null;
   }

@@ -37,6 +37,7 @@ public class HlclParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariablesAccess().getGroup(), "rule__Variables__Group__0");
 					put(grammarAccess.getRangeDomAccess().getGroup(), "rule__RangeDom__Group__0");
 					put(grammarAccess.getSetDomAccess().getGroup(), "rule__SetDom__Group__0");
+					put(grammarAccess.getStringDomAccess().getGroup(), "rule__StringDom__Group__0");
 					put(grammarAccess.getConstraintProgramAccess().getVarsAssignment_1(), "rule__ConstraintProgram__VarsAssignment_1");
 					put(grammarAccess.getConstraintProgramAccess().getConstraintsAssignment_3(), "rule__ConstraintProgram__ConstraintsAssignment_3");
 					put(grammarAccess.getVariablesAccess().getNameAssignment_1(), "rule__Variables__NameAssignment_1");
@@ -45,6 +46,7 @@ public class HlclParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRangeDomAccess().getEndAssignment_3(), "rule__RangeDom__EndAssignment_3");
 					put(grammarAccess.getSetDomAccess().getListAssignment_2(), "rule__SetDom__ListAssignment_2");
 					put(grammarAccess.getBoolDomAccess().getDomAssignment(), "rule__BoolDom__DomAssignment");
+					put(grammarAccess.getStringDomAccess().getListAssignment_2(), "rule__StringDom__ListAssignment_2");
 				}
 			};
 		}

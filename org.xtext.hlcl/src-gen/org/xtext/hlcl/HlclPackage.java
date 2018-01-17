@@ -243,6 +243,34 @@ public interface HlclPackage extends EPackage
    */
   int BOOL_DOM_FEATURE_COUNT = DOM_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link org.xtext.hlcl.impl.StringDomImpl <em>String Dom</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.hlcl.impl.StringDomImpl
+   * @see org.xtext.hlcl.impl.HlclPackageImpl#getStringDom()
+   * @generated
+   */
+  int STRING_DOM = 6;
+
+  /**
+   * The feature id for the '<em><b>List</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_DOM__LIST = DOM_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Dom</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_DOM_FEATURE_COUNT = DOM_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link org.xtext.hlcl.ConstraintProgram <em>Constraint Program</em>}'.
@@ -393,6 +421,27 @@ public interface HlclPackage extends EPackage
   EAttribute getBoolDom_Dom();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.hlcl.StringDom <em>String Dom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Dom</em>'.
+   * @see org.xtext.hlcl.StringDom
+   * @generated
+   */
+  EClass getStringDom();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.xtext.hlcl.StringDom#getList <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>List</em>'.
+   * @see org.xtext.hlcl.StringDom#getList()
+   * @see #getStringDom()
+   * @generated
+   */
+  EAttribute getStringDom_List();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -538,6 +587,24 @@ public interface HlclPackage extends EPackage
      * @generated
      */
     EAttribute BOOL_DOM__DOM = eINSTANCE.getBoolDom_Dom();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.hlcl.impl.StringDomImpl <em>String Dom</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.hlcl.impl.StringDomImpl
+     * @see org.xtext.hlcl.impl.HlclPackageImpl#getStringDom()
+     * @generated
+     */
+    EClass STRING_DOM = eINSTANCE.getStringDom();
+
+    /**
+     * The meta object literal for the '<em><b>List</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_DOM__LIST = eINSTANCE.getStringDom_List();
 
   }
 

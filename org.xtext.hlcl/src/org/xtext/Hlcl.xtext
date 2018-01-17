@@ -14,7 +14,7 @@ Variables:
 //	'var' name=ID 'in' dom=Domain
 //	;
 Dom: 
-  RangeDom | SetDom |BoolDom
+  RangeDom | SetDom |BoolDom |StringDom
 	;
 RangeDom:
 	{RangeDom}(start=INT) ('::') (end=INT)
@@ -26,9 +26,9 @@ BoolDom:
 	dom='boolDomain'
 ;
 
-//StringDomain:
-//	('[') (list = STRING (',' STRING )+)  (']')
-//	;
+StringDom:
+	{StringDom}('[') list +=  STRING+  (']')
+	;
 
 	
 ConsExp:

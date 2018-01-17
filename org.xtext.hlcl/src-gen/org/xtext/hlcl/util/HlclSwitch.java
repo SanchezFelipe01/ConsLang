@@ -118,6 +118,14 @@ public class HlclSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case HlclPackage.STRING_DOM:
+      {
+        StringDom stringDom = (StringDom)theEObject;
+        T result = caseStringDom(stringDom);
+        if (result == null) result = caseDom(stringDom);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -214,6 +222,22 @@ public class HlclSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBoolDom(BoolDom object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Dom</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Dom</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringDom(StringDom object)
   {
     return null;
   }

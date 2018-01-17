@@ -17,6 +17,7 @@ import org.xtext.hlcl.HlclFactory;
 import org.xtext.hlcl.HlclPackage;
 import org.xtext.hlcl.RangeDom;
 import org.xtext.hlcl.SetDom;
+import org.xtext.hlcl.StringDom;
 import org.xtext.hlcl.Variables;
 
 /**
@@ -68,6 +69,13 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * @generated
    */
   private EClass boolDomEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringDomEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -277,6 +285,26 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getStringDom()
+  {
+    return stringDomEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringDom_List()
+  {
+    return (EAttribute)stringDomEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public HlclFactory getHlclFactory()
   {
     return (HlclFactory)getEFactoryInstance();
@@ -321,6 +349,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
 
     boolDomEClass = createEClass(BOOL_DOM);
     createEAttribute(boolDomEClass, BOOL_DOM__DOM);
+
+    stringDomEClass = createEClass(STRING_DOM);
+    createEAttribute(stringDomEClass, STRING_DOM__LIST);
   }
 
   /**
@@ -355,6 +386,7 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
     rangeDomEClass.getESuperTypes().add(this.getDom());
     setDomEClass.getESuperTypes().add(this.getDom());
     boolDomEClass.getESuperTypes().add(this.getDom());
+    stringDomEClass.getESuperTypes().add(this.getDom());
 
     // Initialize classes and features; add operations and parameters
     initEClass(constraintProgramEClass, ConstraintProgram.class, "ConstraintProgram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -376,6 +408,9 @@ public class HlclPackageImpl extends EPackageImpl implements HlclPackage
 
     initEClass(boolDomEClass, BoolDom.class, "BoolDom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBoolDom_Dom(), ecorePackage.getEString(), "dom", null, 0, 1, BoolDom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringDomEClass, StringDom.class, "StringDom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringDom_List(), ecorePackage.getEString(), "list", null, 0, -1, StringDom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

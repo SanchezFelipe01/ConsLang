@@ -231,6 +231,15 @@ ruleDom returns [EObject current=null]
 			$current = $this_BoolDom_2.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getDomAccess().getStringDomParserRuleCall_3());
+		}
+		this_StringDom_3=ruleStringDom
+		{
+			$current = $this_StringDom_3.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -380,6 +389,58 @@ ruleBoolDom returns [EObject current=null]
 				setWithLastConsumed($current, "dom", lv_dom_0_0, "boolDomain");
 			}
 		)
+	)
+;
+
+// Entry rule entryRuleStringDom
+entryRuleStringDom returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getStringDomRule()); }
+	iv_ruleStringDom=ruleStringDom
+	{ $current=$iv_ruleStringDom.current; }
+	EOF;
+
+// Rule StringDom
+ruleStringDom returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getStringDomAccess().getStringDomAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='['
+		{
+			newLeafNode(otherlv_1, grammarAccess.getStringDomAccess().getLeftSquareBracketKeyword_1());
+		}
+		(
+			(
+				lv_list_2_0=RULE_STRING
+				{
+					newLeafNode(lv_list_2_0, grammarAccess.getStringDomAccess().getListSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getStringDomRule());
+					}
+					addWithLastConsumed(
+						$current,
+						"list",
+						lv_list_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)+
+		otherlv_3=']'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getStringDomAccess().getRightSquareBracketKeyword_3());
+		}
 	)
 ;
 

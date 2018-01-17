@@ -100,15 +100,16 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRangeDomParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cSetDomParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cBoolDomParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cStringDomParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		////Variable:
 		////	'var' name=ID 'in' dom=Domain
 		////	;
 		//Dom:
-		//	RangeDom | SetDom | BoolDom;
+		//	RangeDom | SetDom | BoolDom | StringDom;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//RangeDom | SetDom | BoolDom
+		//RangeDom | SetDom | BoolDom | StringDom
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//RangeDom
@@ -119,6 +120,9 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//BoolDom
 		public RuleCall getBoolDomParserRuleCall_2() { return cBoolDomParserRuleCall_2; }
+		
+		//StringDom
+		public RuleCall getStringDomParserRuleCall_3() { return cStringDomParserRuleCall_3; }
 	}
 	public class RangeDomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.RangeDom");
@@ -201,15 +205,43 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		//'boolDomain'
 		public Keyword getDomBoolDomainKeyword_0() { return cDomBoolDomainKeyword_0; }
 	}
+	public class StringDomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.StringDom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cStringDomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cListAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cListSTRINGTerminalRuleCall_2_0 = (RuleCall)cListAssignment_2.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//StringDom:
+		//	{StringDom} '[' list+=STRING+ ']';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{StringDom} '[' list+=STRING+ ']'
+		public Group getGroup() { return cGroup; }
+		
+		//{StringDom}
+		public Action getStringDomAction_0() { return cStringDomAction_0; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
+		
+		//list+=STRING+
+		public Assignment getListAssignment_2() { return cListAssignment_2; }
+		
+		//STRING
+		public RuleCall getListSTRINGTerminalRuleCall_2_0() { return cListSTRINGTerminalRuleCall_2_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+	}
 	public class ConsExpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Hlcl.ConsExp");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cBooleanExpParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntExpParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		////StringDomain:
-		////	('[') (list = STRING (',' STRING )+)  (']')
-		////	;
 		//ConsExp:
 		//	BooleanExp | IntExp;
 		@Override public ParserRule getRule() { return rule; }
@@ -253,6 +285,7 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 	private final RangeDomElements pRangeDom;
 	private final SetDomElements pSetDom;
 	private final BoolDomElements pBoolDom;
+	private final StringDomElements pStringDom;
 	private final ConsExpElements pConsExp;
 	private final BooleanExpElements pBooleanExp;
 	private final IntExpElements pIntExp;
@@ -272,6 +305,7 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		this.pRangeDom = new RangeDomElements();
 		this.pSetDom = new SetDomElements();
 		this.pBoolDom = new BoolDomElements();
+		this.pStringDom = new StringDomElements();
 		this.pConsExp = new ConsExpElements();
 		this.pBooleanExp = new BooleanExpElements();
 		this.pIntExp = new IntExpElements();
@@ -329,7 +363,7 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 	////	'var' name=ID 'in' dom=Domain
 	////	;
 	//Dom:
-	//	RangeDom | SetDom | BoolDom;
+	//	RangeDom | SetDom | BoolDom | StringDom;
 	public DomElements getDomAccess() {
 		return pDom;
 	}
@@ -368,9 +402,16 @@ public class HlclGrammarAccess extends AbstractGrammarElementFinder {
 		return getBoolDomAccess().getRule();
 	}
 	
-	////StringDomain:
-	////	('[') (list = STRING (',' STRING )+)  (']')
-	////	;
+	//StringDom:
+	//	{StringDom} '[' list+=STRING+ ']';
+	public StringDomElements getStringDomAccess() {
+		return pStringDom;
+	}
+	
+	public ParserRule getStringDomRule() {
+		return getStringDomAccess().getRule();
+	}
+	
 	//ConsExp:
 	//	BooleanExp | IntExp;
 	public ConsExpElements getConsExpAccess() {

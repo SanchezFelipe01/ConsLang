@@ -453,7 +453,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDom"
-    // InternalHlcl.g:200:1: ruleDom returns [EObject current=null] : (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom ) ;
+    // InternalHlcl.g:200:1: ruleDom returns [EObject current=null] : (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom | this_StringDom_3= ruleStringDom ) ;
     public final EObject ruleDom() throws RecognitionException {
         EObject current = null;
 
@@ -463,16 +463,18 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
         EObject this_BoolDom_2 = null;
 
+        EObject this_StringDom_3 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalHlcl.g:206:2: ( (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom ) )
-            // InternalHlcl.g:207:2: (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom )
+            // InternalHlcl.g:206:2: ( (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom | this_StringDom_3= ruleStringDom ) )
+            // InternalHlcl.g:207:2: (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom | this_StringDom_3= ruleStringDom )
             {
-            // InternalHlcl.g:207:2: (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom )
-            int alt3=3;
+            // InternalHlcl.g:207:2: (this_RangeDom_0= ruleRangeDom | this_SetDom_1= ruleSetDom | this_BoolDom_2= ruleBoolDom | this_StringDom_3= ruleStringDom )
+            int alt3=4;
             switch ( input.LA(1) ) {
             case RULE_INT:
                 {
@@ -481,7 +483,20 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
                 break;
             case 16:
                 {
-                alt3=2;
+                int LA3_2 = input.LA(2);
+
+                if ( (LA3_2==RULE_INT) ) {
+                    alt3=2;
+                }
+                else if ( (LA3_2==RULE_STRING) ) {
+                    alt3=4;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 3, 2, input);
+
+                    throw nvae;
+                }
                 }
                 break;
             case 18:
@@ -551,6 +566,24 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 4 :
+                    // InternalHlcl.g:235:3: this_StringDom_3= ruleStringDom
+                    {
+
+                    			newCompositeNode(grammarAccess.getDomAccess().getStringDomParserRuleCall_3());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_StringDom_3=ruleStringDom();
+
+                    state._fsp--;
+
+
+                    			current = this_StringDom_3;
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
 
             }
 
@@ -574,7 +607,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRangeDom"
-    // InternalHlcl.g:238:1: entryRuleRangeDom returns [EObject current=null] : iv_ruleRangeDom= ruleRangeDom EOF ;
+    // InternalHlcl.g:247:1: entryRuleRangeDom returns [EObject current=null] : iv_ruleRangeDom= ruleRangeDom EOF ;
     public final EObject entryRuleRangeDom() throws RecognitionException {
         EObject current = null;
 
@@ -582,8 +615,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalHlcl.g:238:49: (iv_ruleRangeDom= ruleRangeDom EOF )
-            // InternalHlcl.g:239:2: iv_ruleRangeDom= ruleRangeDom EOF
+            // InternalHlcl.g:247:49: (iv_ruleRangeDom= ruleRangeDom EOF )
+            // InternalHlcl.g:248:2: iv_ruleRangeDom= ruleRangeDom EOF
             {
              newCompositeNode(grammarAccess.getRangeDomRule()); 
             pushFollow(FOLLOW_1);
@@ -610,7 +643,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRangeDom"
-    // InternalHlcl.g:245:1: ruleRangeDom returns [EObject current=null] : ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) ) ;
+    // InternalHlcl.g:254:1: ruleRangeDom returns [EObject current=null] : ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) ) ;
     public final EObject ruleRangeDom() throws RecognitionException {
         EObject current = null;
 
@@ -622,14 +655,14 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHlcl.g:251:2: ( ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) ) )
-            // InternalHlcl.g:252:2: ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) )
+            // InternalHlcl.g:260:2: ( ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) ) )
+            // InternalHlcl.g:261:2: ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) )
             {
-            // InternalHlcl.g:252:2: ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) )
-            // InternalHlcl.g:253:3: () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) )
+            // InternalHlcl.g:261:2: ( () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) ) )
+            // InternalHlcl.g:262:3: () ( (lv_start_1_0= RULE_INT ) ) otherlv_2= '::' ( (lv_end_3_0= RULE_INT ) )
             {
-            // InternalHlcl.g:253:3: ()
-            // InternalHlcl.g:254:4: 
+            // InternalHlcl.g:262:3: ()
+            // InternalHlcl.g:263:4: 
             {
 
             				current = forceCreateModelElement(
@@ -639,11 +672,11 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalHlcl.g:260:3: ( (lv_start_1_0= RULE_INT ) )
-            // InternalHlcl.g:261:4: (lv_start_1_0= RULE_INT )
+            // InternalHlcl.g:269:3: ( (lv_start_1_0= RULE_INT ) )
+            // InternalHlcl.g:270:4: (lv_start_1_0= RULE_INT )
             {
-            // InternalHlcl.g:261:4: (lv_start_1_0= RULE_INT )
-            // InternalHlcl.g:262:5: lv_start_1_0= RULE_INT
+            // InternalHlcl.g:270:4: (lv_start_1_0= RULE_INT )
+            // InternalHlcl.g:271:5: lv_start_1_0= RULE_INT
             {
             lv_start_1_0=(Token)match(input,RULE_INT,FOLLOW_9); 
 
@@ -669,11 +702,11 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getRangeDomAccess().getColonColonKeyword_2());
             		
-            // InternalHlcl.g:282:3: ( (lv_end_3_0= RULE_INT ) )
-            // InternalHlcl.g:283:4: (lv_end_3_0= RULE_INT )
+            // InternalHlcl.g:291:3: ( (lv_end_3_0= RULE_INT ) )
+            // InternalHlcl.g:292:4: (lv_end_3_0= RULE_INT )
             {
-            // InternalHlcl.g:283:4: (lv_end_3_0= RULE_INT )
-            // InternalHlcl.g:284:5: lv_end_3_0= RULE_INT
+            // InternalHlcl.g:292:4: (lv_end_3_0= RULE_INT )
+            // InternalHlcl.g:293:5: lv_end_3_0= RULE_INT
             {
             lv_end_3_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -718,7 +751,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSetDom"
-    // InternalHlcl.g:304:1: entryRuleSetDom returns [EObject current=null] : iv_ruleSetDom= ruleSetDom EOF ;
+    // InternalHlcl.g:313:1: entryRuleSetDom returns [EObject current=null] : iv_ruleSetDom= ruleSetDom EOF ;
     public final EObject entryRuleSetDom() throws RecognitionException {
         EObject current = null;
 
@@ -726,8 +759,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalHlcl.g:304:47: (iv_ruleSetDom= ruleSetDom EOF )
-            // InternalHlcl.g:305:2: iv_ruleSetDom= ruleSetDom EOF
+            // InternalHlcl.g:313:47: (iv_ruleSetDom= ruleSetDom EOF )
+            // InternalHlcl.g:314:2: iv_ruleSetDom= ruleSetDom EOF
             {
              newCompositeNode(grammarAccess.getSetDomRule()); 
             pushFollow(FOLLOW_1);
@@ -754,7 +787,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSetDom"
-    // InternalHlcl.g:311:1: ruleSetDom returns [EObject current=null] : ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' ) ;
+    // InternalHlcl.g:320:1: ruleSetDom returns [EObject current=null] : ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' ) ;
     public final EObject ruleSetDom() throws RecognitionException {
         EObject current = null;
 
@@ -766,14 +799,14 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHlcl.g:317:2: ( ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' ) )
-            // InternalHlcl.g:318:2: ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' )
+            // InternalHlcl.g:326:2: ( ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' ) )
+            // InternalHlcl.g:327:2: ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' )
             {
-            // InternalHlcl.g:318:2: ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' )
-            // InternalHlcl.g:319:3: () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']'
+            // InternalHlcl.g:327:2: ( () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']' )
+            // InternalHlcl.g:328:3: () otherlv_1= '[' ( (lv_list_2_0= RULE_INT ) )+ otherlv_3= ']'
             {
-            // InternalHlcl.g:319:3: ()
-            // InternalHlcl.g:320:4: 
+            // InternalHlcl.g:328:3: ()
+            // InternalHlcl.g:329:4: 
             {
 
             				current = forceCreateModelElement(
@@ -787,7 +820,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getSetDomAccess().getLeftSquareBracketKeyword_1());
             		
-            // InternalHlcl.g:330:3: ( (lv_list_2_0= RULE_INT ) )+
+            // InternalHlcl.g:339:3: ( (lv_list_2_0= RULE_INT ) )+
             int cnt4=0;
             loop4:
             do {
@@ -801,10 +834,10 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalHlcl.g:331:4: (lv_list_2_0= RULE_INT )
+            	    // InternalHlcl.g:340:4: (lv_list_2_0= RULE_INT )
             	    {
-            	    // InternalHlcl.g:331:4: (lv_list_2_0= RULE_INT )
-            	    // InternalHlcl.g:332:5: lv_list_2_0= RULE_INT
+            	    // InternalHlcl.g:340:4: (lv_list_2_0= RULE_INT )
+            	    // InternalHlcl.g:341:5: lv_list_2_0= RULE_INT
             	    {
             	    lv_list_2_0=(Token)match(input,RULE_INT,FOLLOW_11); 
 
@@ -863,7 +896,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBoolDom"
-    // InternalHlcl.g:356:1: entryRuleBoolDom returns [EObject current=null] : iv_ruleBoolDom= ruleBoolDom EOF ;
+    // InternalHlcl.g:365:1: entryRuleBoolDom returns [EObject current=null] : iv_ruleBoolDom= ruleBoolDom EOF ;
     public final EObject entryRuleBoolDom() throws RecognitionException {
         EObject current = null;
 
@@ -871,8 +904,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalHlcl.g:356:48: (iv_ruleBoolDom= ruleBoolDom EOF )
-            // InternalHlcl.g:357:2: iv_ruleBoolDom= ruleBoolDom EOF
+            // InternalHlcl.g:365:48: (iv_ruleBoolDom= ruleBoolDom EOF )
+            // InternalHlcl.g:366:2: iv_ruleBoolDom= ruleBoolDom EOF
             {
              newCompositeNode(grammarAccess.getBoolDomRule()); 
             pushFollow(FOLLOW_1);
@@ -899,7 +932,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBoolDom"
-    // InternalHlcl.g:363:1: ruleBoolDom returns [EObject current=null] : ( (lv_dom_0_0= 'boolDomain' ) ) ;
+    // InternalHlcl.g:372:1: ruleBoolDom returns [EObject current=null] : ( (lv_dom_0_0= 'boolDomain' ) ) ;
     public final EObject ruleBoolDom() throws RecognitionException {
         EObject current = null;
 
@@ -909,14 +942,14 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHlcl.g:369:2: ( ( (lv_dom_0_0= 'boolDomain' ) ) )
-            // InternalHlcl.g:370:2: ( (lv_dom_0_0= 'boolDomain' ) )
+            // InternalHlcl.g:378:2: ( ( (lv_dom_0_0= 'boolDomain' ) ) )
+            // InternalHlcl.g:379:2: ( (lv_dom_0_0= 'boolDomain' ) )
             {
-            // InternalHlcl.g:370:2: ( (lv_dom_0_0= 'boolDomain' ) )
-            // InternalHlcl.g:371:3: (lv_dom_0_0= 'boolDomain' )
+            // InternalHlcl.g:379:2: ( (lv_dom_0_0= 'boolDomain' ) )
+            // InternalHlcl.g:380:3: (lv_dom_0_0= 'boolDomain' )
             {
-            // InternalHlcl.g:371:3: (lv_dom_0_0= 'boolDomain' )
-            // InternalHlcl.g:372:4: lv_dom_0_0= 'boolDomain'
+            // InternalHlcl.g:380:3: (lv_dom_0_0= 'boolDomain' )
+            // InternalHlcl.g:381:4: lv_dom_0_0= 'boolDomain'
             {
             lv_dom_0_0=(Token)match(input,18,FOLLOW_2); 
 
@@ -953,8 +986,153 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleBoolDom"
 
 
+    // $ANTLR start "entryRuleStringDom"
+    // InternalHlcl.g:396:1: entryRuleStringDom returns [EObject current=null] : iv_ruleStringDom= ruleStringDom EOF ;
+    public final EObject entryRuleStringDom() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleStringDom = null;
+
+
+        try {
+            // InternalHlcl.g:396:50: (iv_ruleStringDom= ruleStringDom EOF )
+            // InternalHlcl.g:397:2: iv_ruleStringDom= ruleStringDom EOF
+            {
+             newCompositeNode(grammarAccess.getStringDomRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleStringDom=ruleStringDom();
+
+            state._fsp--;
+
+             current =iv_ruleStringDom; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleStringDom"
+
+
+    // $ANTLR start "ruleStringDom"
+    // InternalHlcl.g:403:1: ruleStringDom returns [EObject current=null] : ( () otherlv_1= '[' ( (lv_list_2_0= RULE_STRING ) )+ otherlv_3= ']' ) ;
+    public final EObject ruleStringDom() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token lv_list_2_0=null;
+        Token otherlv_3=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalHlcl.g:409:2: ( ( () otherlv_1= '[' ( (lv_list_2_0= RULE_STRING ) )+ otherlv_3= ']' ) )
+            // InternalHlcl.g:410:2: ( () otherlv_1= '[' ( (lv_list_2_0= RULE_STRING ) )+ otherlv_3= ']' )
+            {
+            // InternalHlcl.g:410:2: ( () otherlv_1= '[' ( (lv_list_2_0= RULE_STRING ) )+ otherlv_3= ']' )
+            // InternalHlcl.g:411:3: () otherlv_1= '[' ( (lv_list_2_0= RULE_STRING ) )+ otherlv_3= ']'
+            {
+            // InternalHlcl.g:411:3: ()
+            // InternalHlcl.g:412:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getStringDomAccess().getStringDomAction_0(),
+            					current);
+            			
+
+            }
+
+            otherlv_1=(Token)match(input,16,FOLLOW_12); 
+
+            			newLeafNode(otherlv_1, grammarAccess.getStringDomAccess().getLeftSquareBracketKeyword_1());
+            		
+            // InternalHlcl.g:422:3: ( (lv_list_2_0= RULE_STRING ) )+
+            int cnt5=0;
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( (LA5_0==RULE_STRING) ) {
+                    alt5=1;
+                }
+
+
+                switch (alt5) {
+            	case 1 :
+            	    // InternalHlcl.g:423:4: (lv_list_2_0= RULE_STRING )
+            	    {
+            	    // InternalHlcl.g:423:4: (lv_list_2_0= RULE_STRING )
+            	    // InternalHlcl.g:424:5: lv_list_2_0= RULE_STRING
+            	    {
+            	    lv_list_2_0=(Token)match(input,RULE_STRING,FOLLOW_13); 
+
+            	    					newLeafNode(lv_list_2_0, grammarAccess.getStringDomAccess().getListSTRINGTerminalRuleCall_2_0());
+            	    				
+
+            	    					if (current==null) {
+            	    						current = createModelElement(grammarAccess.getStringDomRule());
+            	    					}
+            	    					addWithLastConsumed(
+            	    						current,
+            	    						"list",
+            	    						lv_list_2_0,
+            	    						"org.eclipse.xtext.common.Terminals.STRING");
+            	    				
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt5 >= 1 ) break loop5;
+                        EarlyExitException eee =
+                            new EarlyExitException(5, input);
+                        throw eee;
+                }
+                cnt5++;
+            } while (true);
+
+            otherlv_3=(Token)match(input,17,FOLLOW_2); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getStringDomAccess().getRightSquareBracketKeyword_3());
+            		
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleStringDom"
+
+
     // $ANTLR start "entryRuleConsExp"
-    // InternalHlcl.g:387:1: entryRuleConsExp returns [String current=null] : iv_ruleConsExp= ruleConsExp EOF ;
+    // InternalHlcl.g:448:1: entryRuleConsExp returns [String current=null] : iv_ruleConsExp= ruleConsExp EOF ;
     public final String entryRuleConsExp() throws RecognitionException {
         String current = null;
 
@@ -962,8 +1140,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalHlcl.g:387:47: (iv_ruleConsExp= ruleConsExp EOF )
-            // InternalHlcl.g:388:2: iv_ruleConsExp= ruleConsExp EOF
+            // InternalHlcl.g:448:47: (iv_ruleConsExp= ruleConsExp EOF )
+            // InternalHlcl.g:449:2: iv_ruleConsExp= ruleConsExp EOF
             {
              newCompositeNode(grammarAccess.getConsExpRule()); 
             pushFollow(FOLLOW_1);
@@ -990,7 +1168,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConsExp"
-    // InternalHlcl.g:394:1: ruleConsExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp ) ;
+    // InternalHlcl.g:455:1: ruleConsExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp ) ;
     public final AntlrDatatypeRuleToken ruleConsExp() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1003,28 +1181,28 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHlcl.g:400:2: ( (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp ) )
-            // InternalHlcl.g:401:2: (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp )
+            // InternalHlcl.g:461:2: ( (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp ) )
+            // InternalHlcl.g:462:2: (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp )
             {
-            // InternalHlcl.g:401:2: (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp )
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // InternalHlcl.g:462:2: (this_BooleanExp_0= ruleBooleanExp | this_IntExp_1= ruleIntExp )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA5_0==19) ) {
-                alt5=1;
+            if ( (LA6_0==19) ) {
+                alt6=1;
             }
-            else if ( (LA5_0==20) ) {
-                alt5=2;
+            else if ( (LA6_0==20) ) {
+                alt6=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
-            switch (alt5) {
+            switch (alt6) {
                 case 1 :
-                    // InternalHlcl.g:402:3: this_BooleanExp_0= ruleBooleanExp
+                    // InternalHlcl.g:463:3: this_BooleanExp_0= ruleBooleanExp
                     {
 
                     			newCompositeNode(grammarAccess.getConsExpAccess().getBooleanExpParserRuleCall_0());
@@ -1044,7 +1222,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalHlcl.g:413:3: this_IntExp_1= ruleIntExp
+                    // InternalHlcl.g:474:3: this_IntExp_1= ruleIntExp
                     {
 
                     			newCompositeNode(grammarAccess.getConsExpAccess().getIntExpParserRuleCall_1());
@@ -1086,7 +1264,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanExp"
-    // InternalHlcl.g:427:1: entryRuleBooleanExp returns [String current=null] : iv_ruleBooleanExp= ruleBooleanExp EOF ;
+    // InternalHlcl.g:488:1: entryRuleBooleanExp returns [String current=null] : iv_ruleBooleanExp= ruleBooleanExp EOF ;
     public final String entryRuleBooleanExp() throws RecognitionException {
         String current = null;
 
@@ -1094,8 +1272,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalHlcl.g:427:50: (iv_ruleBooleanExp= ruleBooleanExp EOF )
-            // InternalHlcl.g:428:2: iv_ruleBooleanExp= ruleBooleanExp EOF
+            // InternalHlcl.g:488:50: (iv_ruleBooleanExp= ruleBooleanExp EOF )
+            // InternalHlcl.g:489:2: iv_ruleBooleanExp= ruleBooleanExp EOF
             {
              newCompositeNode(grammarAccess.getBooleanExpRule()); 
             pushFollow(FOLLOW_1);
@@ -1122,7 +1300,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanExp"
-    // InternalHlcl.g:434:1: ruleBooleanExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'Boolean expression' ;
+    // InternalHlcl.g:495:1: ruleBooleanExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'Boolean expression' ;
     public final AntlrDatatypeRuleToken ruleBooleanExp() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1132,8 +1310,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHlcl.g:440:2: (kw= 'Boolean expression' )
-            // InternalHlcl.g:441:2: kw= 'Boolean expression'
+            // InternalHlcl.g:501:2: (kw= 'Boolean expression' )
+            // InternalHlcl.g:502:2: kw= 'Boolean expression'
             {
             kw=(Token)match(input,19,FOLLOW_2); 
 
@@ -1160,7 +1338,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntExp"
-    // InternalHlcl.g:449:1: entryRuleIntExp returns [String current=null] : iv_ruleIntExp= ruleIntExp EOF ;
+    // InternalHlcl.g:510:1: entryRuleIntExp returns [String current=null] : iv_ruleIntExp= ruleIntExp EOF ;
     public final String entryRuleIntExp() throws RecognitionException {
         String current = null;
 
@@ -1168,8 +1346,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalHlcl.g:449:46: (iv_ruleIntExp= ruleIntExp EOF )
-            // InternalHlcl.g:450:2: iv_ruleIntExp= ruleIntExp EOF
+            // InternalHlcl.g:510:46: (iv_ruleIntExp= ruleIntExp EOF )
+            // InternalHlcl.g:511:2: iv_ruleIntExp= ruleIntExp EOF
             {
              newCompositeNode(grammarAccess.getIntExpRule()); 
             pushFollow(FOLLOW_1);
@@ -1196,7 +1374,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntExp"
-    // InternalHlcl.g:456:1: ruleIntExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'Int expression' ;
+    // InternalHlcl.g:517:1: ruleIntExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'Int expression' ;
     public final AntlrDatatypeRuleToken ruleIntExp() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1206,8 +1384,8 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHlcl.g:462:2: (kw= 'Int expression' )
-            // InternalHlcl.g:463:2: kw= 'Int expression'
+            // InternalHlcl.g:523:2: (kw= 'Int expression' )
+            // InternalHlcl.g:524:2: kw= 'Int expression'
             {
             kw=(Token)match(input,20,FOLLOW_2); 
 
@@ -1248,5 +1426,7 @@ public class InternalHlclParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020020L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000020040L});
 
 }

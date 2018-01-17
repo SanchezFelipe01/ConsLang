@@ -78,6 +78,15 @@ public interface HlclFactory extends EFactory
   BoolDom createBoolDom();
 
   /**
+   * Returns a new object of class '<em>String Dom</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Dom</em>'.
+   * @generated
+   */
+  StringDom createStringDom();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

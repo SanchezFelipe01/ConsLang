@@ -19,6 +19,7 @@ import org.xtext.hlcl.ConstraintProgram;
 import org.xtext.hlcl.HlclPackage;
 import org.xtext.hlcl.RangeDom;
 import org.xtext.hlcl.SetDom;
+import org.xtext.hlcl.StringDom;
 import org.xtext.hlcl.Variables;
 import org.xtext.services.HlclGrammarAccess;
 
@@ -47,6 +48,9 @@ public class HlclSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case HlclPackage.SET_DOM:
 				sequence_SetDom(context, (SetDom) semanticObject); 
+				return; 
+			case HlclPackage.STRING_DOM:
+				sequence_StringDom(context, (StringDom) semanticObject); 
 				return; 
 			case HlclPackage.VARIABLES:
 				sequence_Variables(context, (Variables) semanticObject); 
@@ -118,6 +122,19 @@ public class HlclSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     list+=INT+
 	 */
 	protected void sequence_SetDom(ISerializationContext context, SetDom semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Dom returns StringDom
+	 *     StringDom returns StringDom
+	 *
+	 * Constraint:
+	 *     list+=STRING+
+	 */
+	protected void sequence_StringDom(ISerializationContext context, StringDom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
